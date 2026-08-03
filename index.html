@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     TÍTULO DA ABA E DESCRIÇÃO DO GOOGLE — troque pelos seus
+     ============================================================ -->
+<title>Nome do Seu Produto — a promessa principal em poucas palavras</title>
+<meta name="description" content="Uma frase que explica o que a pessoa ganha ao comprar. Aparece no Google e no WhatsApp.">
+
+<!-- ============================================================
+     PRÉVIA NO WHATSAPP E REDES SOCIAIS — troque pelos seus
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nome do Seu Produto — a promessa principal">
+<meta property="og:description" content="Uma frase que explica o que a pessoa ganha ao comprar.">
+<meta property="og:locale" content="pt_BR">
+
+<!-- ============================================================
+     PIXEL DO META (Facebook/Instagram)
+     Só descomente quando for rodar anúncio.
+     Troque SEU_PIXEL_ID pelo número do seu pixel.
+     ============================================================
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+     ============================================================ -->
+
+<style>
+  :root {
+    --tinta:      #14161a;
+    --suave:      #5b616e;
+    --linha:      #e4e7ec;
+    --fundo-alt:  #f7f8fa;
+    --acao:       #16a34a;
+    --acao-forte: #15803d;
+    --destaque:   #fef3c7;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--tinta);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .faixa { padding: 56px 20px; }
+  .faixa--cinza { background: var(--fundo-alt); border-block: 1px solid var(--linha); }
+  .caixa { max-width: 660px; margin: 0 auto; }
+
+  h1 {
+    font-size: clamp(30px, 7vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
+    font-weight: 700;
+  }
+
+  h3 { font-size: 20px; margin: 0 0 8px; font-weight: 700; }
+  p  { margin: 0 0 18px; }
+
+  .chamada  { font-size: clamp(18px, 4vw, 21px); color: var(--suave); margin-bottom: 32px; }
+  .selo {
+    display: inline-block;
+    background: var(--destaque);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  /* ---- Botão de compra ---- */
+  .botao {
+    display: block;
+    background: var(--acao);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    padding: 18px 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 var(--acao-forte);
+    transition: transform .06s ease, background .15s ease;
+  }
+  .botao:hover  { background: var(--acao-forte); }
+  .botao:active { transform: translateY(2px); box-shadow: none; }
+  .sob-botao { text-align: center; font-size: 15px; color: var(--suave); margin-top: 12px; }
+
+  /* ---- Listas ---- */
+  .lista { list-style: none; padding: 0; margin: 0 0 28px; }
+  .lista li {
+    padding-left: 34px;
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .lista li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    color: var(--acao);
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  .lista--dor li::before { content: "✕"; color: #dc2626; }
+
+  /* ---- Depoimentos ---- */
+  .depoimento {
+    background: #fff;
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .depoimento p { margin: 0 0 14px; font-size: 17px; }
+  .quem { font-size: 15px; color: var(--suave); font-weight: 600; margin: 0; }
+
+  /* ---- Bloco de preço ---- */
+  .oferta {
+    border: 2px solid var(--tinta);
+    border-radius: 14px;
+    padding: 32px 26px;
+    text-align: center;
+    background: #fff;
+  }
+  .de     { color: var(--suave); text-decoration: line-through; font-size: 18px; margin: 0; }
+  .por    { font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin: 4px 0; }
+  .por span { font-size: 26px; font-weight: 700; }
+  .parcela{ color: var(--suave); margin-bottom: 26px; font-size: 16px; }
+
+  /* ---- Garantia ---- */
+  .garantia {
+    border-left: 4px solid var(--acao);
+    background: var(--fundo-alt);
+    padding: 22px 24px;
+    border-radius: 0 10px 10px 0;
+  }
+  .garantia p:last-child { margin-bottom: 0; }
+
+  /* ---- FAQ ---- */
+  details {
+    border-bottom: 1px solid var(--linha);
+    padding: 18px 0;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    float: right;
+    color: var(--suave);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+  }
+  details[open] summary::after { content: "−"; }
+  details p { margin: 14px 0 0; color: var(--suave); }
+
+  /* ---- Rodapé ---- */
+  footer {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--suave);
+    border-top: 1px solid var(--linha);
+  }
+  footer a { color: var(--suave); }
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     1. TOPO — headline, promessa e primeiro botão
+     ================================================================ -->
+<section class="faixa">
+  <div class="caixa">
+    <span class="selo">SUBSTITUA: Para quem está começando do zero</span>
+
+    <h1>SUBSTITUA: A transformação principal que seu produto entrega</h1>
+
+    <p class="chamada">
+      SUBSTITUA: Explique em uma frase para quem é, o que a pessoa consegue
+      e em quanto tempo. Exemplo: "O passo a passo para publicar seu primeiro
+      site no ar hoje — mesmo sem saber programar."
+    </p>
+
+    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT (Kiwify, Cakto, Hotmart) -->
+    <a class="botao" href="#">QUERO COMEÇAR AGORA</a>
+    <p class="sob-botao">Acesso imediato · Pagamento único</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     2. O PROBLEMA — a dor que o leitor reconhece em si
+     ================================================================ -->
+<section class="faixa faixa--cinza">
+  <div class="caixa">
+    <h2>SUBSTITUA: Se você se identifica com isso, essa página é pra você</h2>
+
+    <ul class="lista lista--dor">
+      <li>SUBSTITUA: A primeira frustração que a pessoa vive hoje</li>
+      <li>SUBSTITUA: A segunda — algo que ela já tentou e não deu certo</li>
+      <li>SUBSTITUA: A terceira — o medo ou a insegurança que trava</li>
+      <li>SUBSTITUA: A quarta — o tempo ou dinheiro que ela já perdeu</li>
+    </ul>
+
+    <p>
+      SUBSTITUA: Feche essa parte reconhecendo que o problema não é falta de
+      esforço dela — é falta de um caminho claro. É isso que o seu produto resolve.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     3. A SOLUÇÃO
+     ================================================================ -->
+<section class="faixa">
+  <div class="caixa">
+    <h2>SUBSTITUA: Apresente o produto pelo nome</h2>
+
+    <p>
+      SUBSTITUA: Explique o que é, em uma linguagem simples. Nada de termos técnicos.
+      Diga o formato (guia em PDF, planilha, aulas) e quanto tempo leva pra consumir.
+    </p>
+
+    <p>
+      SUBSTITUA: Conte por que você criou. Se você já passou pelo mesmo problema,
+      é aqui que essa história entra — é o que gera identificação e confiança.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     4. O QUE ESTÁ INCLUSO
+     ================================================================ -->
+<section class="faixa faixa--cinza">
+  <div class="caixa">
+    <h2>O que você recebe</h2>
+
+    <ul class="lista">
+      <li><strong>SUBSTITUA: Entregável principal</strong> — o que é e o que resolve</li>
+      <li><strong>SUBSTITUA: Segundo item</strong> — descrição curta</li>
+      <li><strong>SUBSTITUA: Terceiro item</strong> — descrição curta</li>
+      <li><strong>SUBSTITUA: Bônus</strong> — algo extra que aumenta o valor percebido</li>
+    </ul>
+
+    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
+    <a class="botao" href="#">QUERO GARANTIR O MEU</a>
+  </div>
+</section>
+
+<!-- ================================================================
+     5. DEPOIMENTOS
+     ATENÇÃO: só publique depoimentos REAIS de clientes reais.
+     Depoimento inventado é propaganda enganosa (Código de Defesa do
+     Consumidor) e derruba anúncio no Meta. Se ainda não tem nenhum,
+     apague esta seção inteira e coloque depois.
+     ================================================================ -->
+<section class="faixa">
+  <div class="caixa">
+    <h2>Quem já usou</h2>
+
+    <div class="depoimento">
+      <p>"SUBSTITUA: depoimento real de um cliente, com o resultado específico que ele teve."</p>
+      <p class="quem">— Nome, cidade</p>
+    </div>
+
+    <div class="depoimento">
+      <p>"SUBSTITUA: outro depoimento real. Os melhores citam a objeção que a pessoa tinha antes de comprar."</p>
+      <p class="quem">— Nome, cidade</p>
+    </div>
+
+    <div class="depoimento">
+      <p>"SUBSTITUA: terceiro depoimento real."</p>
+      <p class="quem">— Nome, cidade</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     6. OFERTA E PREÇO
+     ================================================================ -->
+<section class="faixa faixa--cinza">
+  <div class="caixa">
+    <h2>Quanto custa</h2>
+
+    <div class="oferta">
+      <p class="de">De R$ 97,00</p>
+      <p class="por"><span>R$</span> 27<span>,00</span></p>
+      <p class="parcela">à vista no Pix ou em até 3x no cartão</p>
+
+      <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
+      <a class="botao" href="#">COMPRAR AGORA</a>
+      <p class="sob-botao">Compra segura · Acesso enviado por e-mail</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     7. GARANTIA
+     A garantia de 7 dias não é opcional: o Código de Defesa do
+     Consumidor (art. 49) dá direito a arrependimento em 7 dias
+     para qualquer compra online. Melhor transformar isso em argumento.
+     ================================================================ -->
+<section class="faixa">
+  <div class="caixa">
+    <div class="garantia">
+      <h3>Garantia de 7 dias</h3>
+      <p>
+        Se você comprar, acessar e sentir que não era pra você, é só pedir o
+        reembolso em até 7 dias. Devolvemos 100% do valor, sem perguntas.
+        O risco é todo meu.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     8. PERGUNTAS FREQUENTES
+     ================================================================ -->
+<section class="faixa faixa--cinza">
+  <div class="caixa">
+    <h2>Perguntas frequentes</h2>
+
+    <details>
+      <summary>Como recebo o acesso depois de comprar?</summary>
+      <p>SUBSTITUA: explique o processo. Ex.: "O link chega no seu e-mail em até 5 minutos após a confirmação do pagamento."</p>
+    </details>
+
+    <details>
+      <summary>Serve pra quem está começando do zero?</summary>
+      <p>SUBSTITUA: responda a objeção mais comum de quem tem medo de não conseguir acompanhar.</p>
+    </details>
+
+    <details>
+      <summary>Quanto tempo preciso ter disponível?</summary>
+      <p>SUBSTITUA: seja específico e realista. Ex.: "Cerca de 2 horas para ler e aplicar."</p>
+    </details>
+
+    <details>
+      <summary>Por quanto tempo tenho acesso?</summary>
+      <p>SUBSTITUA: diga se é vitalício, por um período, ou se tem atualizações inclusas.</p>
+    </details>
+
+    <details>
+      <summary>E se eu não gostar?</summary>
+      <p>Você tem 7 dias para pedir reembolso integral, sem precisar justificar.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ================================================================
+     9. CHAMADA FINAL
+     ================================================================ -->
+<section class="faixa">
+  <div class="caixa">
+    <h2>SUBSTITUA: Retome a promessa principal aqui</h2>
+
+    <p>
+      SUBSTITUA: Um parágrafo curto contrastando os dois caminhos — continuar
+      como está hoje, ou dar o primeiro passo agora.
+    </p>
+
+    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
+    <a class="botao" href="#">QUERO COMEÇAR AGORA</a>
+    <p class="sob-botao">Acesso imediato · Garantia de 7 dias</p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    SUBSTITUA: Seu Nome ou Empresa · CNPJ 00.000.000/0001-00<br>
+    Contato: seu@email.com
+  </p>
+  <p>
+    Este site não é afiliado ao Facebook, Instagram ou Meta Platforms.
+  </p>
+</footer>
+
+</body>
+</html>
