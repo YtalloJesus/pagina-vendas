@@ -1,409 +1,545 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ============================================================
-     TÍTULO DA ABA E DESCRIÇÃO DO GOOGLE — troque pelos seus
-     ============================================================ -->
-<title>Nome do Seu Produto — a promessa principal em poucas palavras</title>
-<meta name="description" content="Uma frase que explica o que a pessoa ganha ao comprar. Aparece no Google e no WhatsApp.">
+<title>150 Recetas para Freidora de Aire — Aprende a usar tu airfryer hoy mismo</title>
+<meta name="description" content="Más de 150 recetas paso a paso para tu freidora de aire, desde desayunos hasta postres. Acceso inmediato + 10 bonos de regalo.">
 
-<!-- ============================================================
-     PRÉVIA NO WHATSAPP E REDES SOCIAIS — troque pelos seus
-     ============================================================ -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nome do Seu Produto — a promessa principal">
-<meta property="og:description" content="Uma frase que explica o que a pessoa ganha ao comprar.">
-<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="150 Recetas para Freidora de Aire + 10 Bonos de Regalo">
+<meta property="og:description" content="Deja de cocinar siempre lo mismo. Más de 150 recetas paso a paso, con tiempos y temperaturas exactas.">
+<meta property="og:locale" content="es_LA">
 
-<!-- ============================================================
-     PIXEL DO META (Facebook/Instagram)
-     Só descomente quando for rodar anúncio.
-     Troque SEU_PIXEL_ID pelo número do seu pixel.
-     ============================================================
+<!-- ==========================================================
+     PIXEL DE META (Facebook / Instagram)
+     Descomenta esto SOLO cuando vayas a poner anuncios.
+     Reemplaza TU_PIXEL_ID por el número de tu píxel.
+     ==========================================================
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'SEU_PIXEL_ID');
-fbq('track', 'PageView');
+fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 </script>
-     ============================================================ -->
+     ========================================================== -->
+
+<!-- ==========================================================
+     ⬇⬇⬇  LO ÚNICO QUE TIENES QUE CAMBIAR PARA VENDER  ⬇⬇⬇
+     Pega aquí el link de tu checkout de Kiwify, entre las comillas.
+     Todos los botones de la página se actualizan solos.
+     ========================================================== -->
+<script>
+  const LINK_CHECKOUT = "";
+</script>
+<!-- ==========================================================
+     ⬆⬆⬆  FIN DE LA CONFIGURACIÓN  ⬆⬆⬆
+     ========================================================== -->
 
 <style>
-  :root {
-    --tinta:      #14161a;
-    --suave:      #5b616e;
-    --linha:      #e4e7ec;
-    --fundo-alt:  #f7f8fa;
-    --acao:       #16a34a;
-    --acao-forte: #15803d;
-    --destaque:   #fef3c7;
+  :root{
+    --tinta:#1c1917;
+    --suave:#57534e;
+    --linea:#e7e5e4;
+    --crema:#fdf8f3;
+    --acento:#c2410c;
+    --acento-fuerte:#9a3412;
+    --verde:#15803d;
+    --amarillo:#fef3c7;
+    --radio:14px;
   }
 
-  * { box-sizing: border-box; }
+  *{box-sizing:border-box}
 
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.65;
-    color: var(--tinta);
-    background: #fff;
-    -webkit-font-smoothing: antialiased;
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--tinta);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:88px; /* espacio para la barra fija del móvil */
   }
 
-  .faixa { padding: 56px 20px; }
-  .faixa--cinza { background: var(--fundo-alt); border-block: 1px solid var(--linha); }
-  .caixa { max-width: 660px; margin: 0 auto; }
+  img{max-width:100%;height:auto;display:block}
 
-  h1 {
-    font-size: clamp(30px, 7vw, 46px);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px;
-    font-weight: 800;
-  }
+  .franja{padding:52px 20px}
+  .franja--crema{background:var(--crema)}
+  .franja--oscura{background:var(--tinta);color:#fff}
+  .franja--oscura .apagado{color:#d6d3d1}
+  .caja{max-width:680px;margin:0 auto}
 
-  h2 {
-    font-size: clamp(24px, 5vw, 32px);
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    margin: 0 0 20px;
-    font-weight: 700;
-  }
+  h1{font-size:clamp(28px,6.6vw,42px);line-height:1.15;letter-spacing:-.02em;margin:0 0 18px;font-weight:800}
+  h2{font-size:clamp(24px,5.2vw,32px);line-height:1.22;letter-spacing:-.015em;margin:0 0 20px;font-weight:800}
+  h3{font-size:19px;margin:0 0 8px;font-weight:700}
+  p{margin:0 0 18px}
+  .apagado{color:var(--suave)}
+  .centrado{text-align:center}
 
-  h3 { font-size: 20px; margin: 0 0 8px; font-weight: 700; }
-  p  { margin: 0 0 18px; }
+  .bajada{font-size:clamp(17px,4vw,20px);color:var(--suave);margin-bottom:28px}
 
-  .chamada  { font-size: clamp(18px, 4vw, 21px); color: var(--suave); margin-bottom: 32px; }
-  .selo {
-    display: inline-block;
-    background: var(--destaque);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 20px;
+  .etiqueta{
+    display:inline-block;background:var(--amarillo);color:#78350f;
+    padding:6px 14px;border-radius:999px;font-size:14px;font-weight:800;
+    letter-spacing:.02em;margin-bottom:18px
   }
 
-  /* ---- Botão de compra ---- */
-  .botao {
-    display: block;
-    background: var(--acao);
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    font-size: 19px;
-    font-weight: 700;
-    padding: 18px 28px;
-    border-radius: 10px;
-    box-shadow: 0 2px 0 var(--acao-forte);
-    transition: transform .06s ease, background .15s ease;
+  /* ---------- Botones ---------- */
+  .boton{
+    display:block;background:var(--acento);color:#fff;text-decoration:none;
+    text-align:center;font-size:clamp(17px,3.6vw,20px);font-weight:800;
+    padding:20px 22px;border-radius:var(--radio);line-height:1.3;
+    box-shadow:0 3px 0 var(--acento-fuerte);
+    transition:transform .06s ease,background .15s ease;
+    animation:latido 2.6s ease-in-out infinite;
   }
-  .botao:hover  { background: var(--acao-forte); }
-  .botao:active { transform: translateY(2px); box-shadow: none; }
-  .sob-botao { text-align: center; font-size: 15px; color: var(--suave); margin-top: 12px; }
+  .boton:hover{background:var(--acento-fuerte)}
+  .boton:active{transform:translateY(3px);box-shadow:none}
+  @keyframes latido{0%,92%,100%{transform:scale(1)}96%{transform:scale(1.025)}}
+  @media (prefers-reduced-motion:reduce){.boton{animation:none}}
 
-  /* ---- Listas ---- */
-  .lista { list-style: none; padding: 0; margin: 0 0 28px; }
-  .lista li {
-    padding-left: 34px;
-    position: relative;
-    margin-bottom: 14px;
+  .bajo-boton{text-align:center;font-size:15px;color:var(--suave);margin-top:12px}
+
+  /* ---------- Contador ---------- */
+  .contador{
+    background:var(--tinta);color:#fff;border-radius:var(--radio);
+    padding:18px;text-align:center;margin-bottom:24px
   }
-  .lista li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: -1px;
-    color: var(--acao);
-    font-weight: 800;
-    font-size: 20px;
+  .contador .titulo{font-size:14px;font-weight:800;letter-spacing:.08em;color:#fbbf24;margin:0 0 10px}
+  .reloj{display:flex;gap:10px;justify-content:center}
+  .reloj div{background:#292524;border-radius:8px;padding:8px 4px;min-width:62px}
+  .reloj .num{font-size:26px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .reloj .rot{font-size:11px;color:#a8a29e;text-transform:uppercase;letter-spacing:.05em}
+
+  /* ---------- Listas ---------- */
+  .lista{list-style:none;padding:0;margin:0 0 26px}
+  .lista li{padding-left:34px;position:relative;margin-bottom:13px}
+  .lista li::before{content:"✓";position:absolute;left:0;top:-2px;color:var(--verde);font-weight:800;font-size:21px}
+  .lista--dolor li::before{content:"✕";color:#dc2626}
+
+  /* ---------- Tarjetas ---------- */
+  .rejilla{display:grid;gap:14px;margin-bottom:26px}
+  @media(min-width:560px){.rejilla--2{grid-template-columns:1fr 1fr}}
+
+  .tarjeta{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px 22px}
+  .tarjeta p:last-child{margin-bottom:0}
+  .icono{font-size:26px;line-height:1;margin-bottom:10px}
+
+  /* ---------- Marcadores de imagen ---------- */
+  .foto{
+    border:2px dashed #d6d3d1;border-radius:var(--radio);background:var(--crema);
+    aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:16px;color:#a8a29e;font-size:14px;font-weight:600
+  }
+  .foto--ancha{aspect-ratio:16/9}
+
+  /* ---------- Testimonios ---------- */
+  .testimonio{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px 22px;margin-bottom:14px}
+  .estrellas{color:#f59e0b;font-size:16px;letter-spacing:2px;margin-bottom:8px}
+  .testimonio p{margin:0 0 12px;font-size:17px}
+  .quien{font-size:15px;color:var(--suave);font-weight:700;margin:0}
+
+  /* ---------- Bonos ---------- */
+  .bono{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--linea);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:#fff}
+  .bono .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--acento);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .bono h3{font-size:17px;margin:0 0 2px}
+  .bono .valor{font-size:14px;color:var(--verde);font-weight:800;margin:0}
+
+  /* ---------- Oferta ---------- */
+  .oferta{border:3px solid var(--acento);border-radius:18px;padding:30px 24px;text-align:center;background:#fff}
+  .antes{color:var(--suave);font-size:18px;margin:0}
+  .antes s{opacity:.75}
+  .precio{font-size:clamp(46px,12vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:6px 0 2px}
+  .precio small{font-size:.42em;font-weight:700;vertical-align:.55em}
+  .moneda{color:var(--suave);font-size:16px;margin-bottom:24px}
+
+  .suma{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:16px;text-align:left}
+  .suma td{padding:9px 0;border-bottom:1px solid var(--linea)}
+  .suma td:last-child{text-align:right;white-space:nowrap;font-weight:700}
+  .suma tr:last-child td{border-bottom:0;border-top:2px solid var(--tinta);font-weight:800;font-size:18px;padding-top:12px}
+
+  /* ---------- Garantía ---------- */
+  .garantia{border-left:5px solid var(--verde);background:var(--crema);padding:22px 24px;border-radius:0 var(--radio) var(--radio) 0}
+  .garantia p:last-child{margin-bottom:0}
+
+  /* ---------- FAQ ---------- */
+  details{border-bottom:1px solid var(--linea);padding:18px 0}
+  summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;padding-right:30px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:0;top:-4px;color:var(--suave);font-weight:400;font-size:26px;line-height:1}
+  details[open] summary::after{content:"−"}
+  details p{margin:12px 0 0;color:var(--suave);font-size:17px}
+
+  /* ---------- Barra fija móvil ---------- */
+  .barra-fija{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-top:1px solid var(--linea);padding:12px 16px;
+    box-shadow:0 -4px 16px rgba(0,0,0,.07)
+  }
+  .barra-fija .boton{padding:16px;font-size:17px;animation:none}
+  @media(min-width:900px){.barra-fija{display:none}body{padding-bottom:0}}
+
+  /* ---------- Aviso de configuración ---------- */
+  .aviso-config{
+    background:#dc2626;color:#fff;text-align:center;
+    padding:12px 16px;font-size:15px;font-weight:700
   }
 
-  .lista--dor li::before { content: "✕"; color: #dc2626; }
-
-  /* ---- Depoimentos ---- */
-  .depoimento {
-    background: #fff;
-    border: 1px solid var(--linha);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 16px;
-  }
-  .depoimento p { margin: 0 0 14px; font-size: 17px; }
-  .quem { font-size: 15px; color: var(--suave); font-weight: 600; margin: 0; }
-
-  /* ---- Bloco de preço ---- */
-  .oferta {
-    border: 2px solid var(--tinta);
-    border-radius: 14px;
-    padding: 32px 26px;
-    text-align: center;
-    background: #fff;
-  }
-  .de     { color: var(--suave); text-decoration: line-through; font-size: 18px; margin: 0; }
-  .por    { font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin: 4px 0; }
-  .por span { font-size: 26px; font-weight: 700; }
-  .parcela{ color: var(--suave); margin-bottom: 26px; font-size: 16px; }
-
-  /* ---- Garantia ---- */
-  .garantia {
-    border-left: 4px solid var(--acao);
-    background: var(--fundo-alt);
-    padding: 22px 24px;
-    border-radius: 0 10px 10px 0;
-  }
-  .garantia p:last-child { margin-bottom: 0; }
-
-  /* ---- FAQ ---- */
-  details {
-    border-bottom: 1px solid var(--linha);
-    padding: 18px 0;
-  }
-  summary {
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 18px;
-    list-style: none;
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary::after {
-    content: "+";
-    float: right;
-    color: var(--suave);
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1;
-  }
-  details[open] summary::after { content: "−"; }
-  details p { margin: 14px 0 0; color: var(--suave); }
-
-  /* ---- Rodapé ---- */
-  footer {
-    padding: 40px 20px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--suave);
-    border-top: 1px solid var(--linha);
-  }
-  footer a { color: var(--suave); }
+  footer{padding:38px 20px 28px;text-align:center;font-size:14px;color:var(--suave);border-top:1px solid var(--linea);line-height:1.55}
+  footer p{margin:0 0 12px}
 </style>
 </head>
 <body>
 
+<!-- Aviso que aparece solo si falta configurar el link. Desaparece solo. -->
+<div class="aviso-config" id="avisoConfig" hidden>
+  ⚠️ Falta pegar tu link de Kiwify en el archivo index.html (busca LINK_CHECKOUT)
+</div>
+
 <!-- ================================================================
-     1. TOPO — headline, promessa e primeiro botão
+     1. ENCABEZADO — el dolor + la promesa
      ================================================================ -->
-<section class="faixa">
-  <div class="caixa">
-    <span class="selo">SUBSTITUA: Para quem está começando do zero</span>
+<section class="franja">
+  <div class="caja">
+    <span class="etiqueta">🔥 50% DE DESCUENTO + 10 BONOS DE REGALO</span>
 
-    <h1>SUBSTITUA: A transformação principal que seu produto entrega</h1>
+    <h1>¿Compraste una freidora de aire y terminaste cocinando siempre lo mismo?</h1>
 
-    <p class="chamada">
-      SUBSTITUA: Explique em uma frase para quem é, o que a pessoa consegue
-      e em quanto tempo. Exemplo: "O passo a passo para publicar seu primeiro
-      site no ar hoje — mesmo sem saber programar."
+    <p class="bajada">
+      Más de <strong>150 recetas paso a paso</strong> con tiempos y temperaturas exactas
+      para tu airfryer. Desde desayunos rápidos hasta postres — sin adivinar, sin quemar
+      la comida y sin pasar horas en la cocina.
     </p>
 
-    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT (Kiwify, Cakto, Hotmart) -->
-    <a class="botao" href="#">QUERO COMEÇAR AGORA</a>
-    <p class="sob-botao">Acesso imediato · Pagamento único</p>
+    <div class="foto foto--ancha" style="margin-bottom:26px">
+      IMAGEN PRINCIPAL<br><small>Mockup del ebook en celular y tablet</small>
+    </div>
+
+    <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS AHORA</a>
+    <p class="bajo-boton">Acceso inmediato · Pago único · Garantía de 7 días</p>
   </div>
 </section>
 
 <!-- ================================================================
-     2. O PROBLEMA — a dor que o leitor reconhece em si
+     2. IDENTIFICACIÓN — que se reconozca en el problema
      ================================================================ -->
-<section class="faixa faixa--cinza">
-  <div class="caixa">
-    <h2>SUBSTITUA: Se você se identifica com isso, essa página é pra você</h2>
+<section class="franja franja--crema">
+  <div class="caja">
+    <h2>Si te pasa alguna de estas cosas, sigue leyendo</h2>
 
-    <ul class="lista lista--dor">
-      <li>SUBSTITUA: A primeira frustração que a pessoa vive hoje</li>
-      <li>SUBSTITUA: A segunda — algo que ela já tentou e não deu certo</li>
-      <li>SUBSTITUA: A terceira — o medo ou a insegurança que trava</li>
-      <li>SUBSTITUA: A quarta — o tempo ou dinheiro que ela já perdeu</li>
+    <ul class="lista lista--dolor">
+      <li>Usas la freidora solo para papas fritas y nada más</li>
+      <li>Buscas recetas en internet y la mitad no te sale como en la foto</li>
+      <li>Nunca sabes cuántos minutos ni a qué temperatura poner cada cosa</li>
+      <li>Se te quema por fuera y queda crudo por dentro</li>
+      <li>La tienes guardada en un mueble porque te da flojera pensar qué hacer</li>
     </ul>
 
     <p>
-      SUBSTITUA: Feche essa parte reconhecendo que o problema não é falta de
-      esforço dela — é falta de um caminho claro. É isso que o seu produto resolve.
+      No es que cocines mal. Es que nadie te dio un manual. La freidora de aire cocina
+      distinto a un horno y a una sartén — y sin los tiempos correctos, cualquiera falla.
     </p>
   </div>
 </section>
 
 <!-- ================================================================
-     3. A SOLUÇÃO
+     3. LA SOLUCIÓN
      ================================================================ -->
-<section class="faixa">
-  <div class="caixa">
-    <h2>SUBSTITUA: Apresente o produto pelo nome</h2>
+<section class="franja">
+  <div class="caja">
+    <h2>150 Delicias en Freidora de Aire</h2>
 
     <p>
-      SUBSTITUA: Explique o que é, em uma linguagem simples. Nada de termos técnicos.
-      Diga o formato (guia em PDF, planilha, aulas) e quanto tempo leva pra consumir.
+      Es un recetario digital con <strong>más de 150 recetas probadas</strong>, organizadas
+      por categoría y escritas en lenguaje simple. Cada una trae los ingredientes, el paso
+      a paso, y lo más importante: <strong>el tiempo y la temperatura exactos</strong>.
     </p>
 
     <p>
-      SUBSTITUA: Conte por que você criou. Se você já passou pelo mesmo problema,
-      é aqui que essa história entra — é o que gera identificação e confiança.
+      Lo abres en el celular mientras cocinas. Eliges la receta, sigues los pasos y listo.
+      Sin cursos, sin videos largos, sin complicaciones.
     </p>
+
+    <div class="rejilla rejilla--2">
+      <div class="foto">FOTO 1<br><small>Plato terminado</small></div>
+      <div class="foto">FOTO 2<br><small>Plato terminado</small></div>
+      <div class="foto">FOTO 3<br><small>Página interna del ebook</small></div>
+      <div class="foto">FOTO 4<br><small>Página interna del ebook</small></div>
+    </div>
+
+    <a class="boton" data-checkout href="#oferta">LO QUIERO CON EL DESCUENTO</a>
   </div>
 </section>
 
 <!-- ================================================================
-     4. O QUE ESTÁ INCLUSO
+     4. BENEFICIOS
      ================================================================ -->
-<section class="faixa faixa--cinza">
-  <div class="caixa">
-    <h2>O que você recebe</h2>
+<section class="franja franja--crema">
+  <div class="caja">
+    <h2>Lo que cambia desde el primer día</h2>
 
-    <ul class="lista">
-      <li><strong>SUBSTITUA: Entregável principal</strong> — o que é e o que resolve</li>
-      <li><strong>SUBSTITUA: Segundo item</strong> — descrição curta</li>
-      <li><strong>SUBSTITUA: Terceiro item</strong> — descrição curta</li>
-      <li><strong>SUBSTITUA: Bônus</strong> — algo extra que aumenta o valor percebido</li>
-    </ul>
-
-    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
-    <a class="botao" href="#">QUERO GARANTIR O MEU</a>
-  </div>
-</section>
-
-<!-- ================================================================
-     5. DEPOIMENTOS
-     ATENÇÃO: só publique depoimentos REAIS de clientes reais.
-     Depoimento inventado é propaganda enganosa (Código de Defesa do
-     Consumidor) e derruba anúncio no Meta. Se ainda não tem nenhum,
-     apague esta seção inteira e coloque depois.
-     ================================================================ -->
-<section class="faixa">
-  <div class="caixa">
-    <h2>Quem já usou</h2>
-
-    <div class="depoimento">
-      <p>"SUBSTITUA: depoimento real de um cliente, com o resultado específico que ele teve."</p>
-      <p class="quem">— Nome, cidade</p>
-    </div>
-
-    <div class="depoimento">
-      <p>"SUBSTITUA: outro depoimento real. Os melhores citam a objeção que a pessoa tinha antes de comprar."</p>
-      <p class="quem">— Nome, cidade</p>
-    </div>
-
-    <div class="depoimento">
-      <p>"SUBSTITUA: terceiro depoimento real."</p>
-      <p class="quem">— Nome, cidade</p>
+    <div class="rejilla rejilla--2">
+      <div class="tarjeta">
+        <div class="icono">⏱️</div>
+        <h3>Comidas en 15 minutos</h3>
+        <p class="apagado">Recetas pensadas para días con prisa, no para chefs con tiempo libre.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">🌡️</div>
+        <h3>Nunca más adivinar</h3>
+        <p class="apagado">Cada receta con su temperatura y sus minutos exactos.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">🥗</div>
+        <h3>Menos aceite, mismo sabor</h3>
+        <p class="apagado">Comida más liviana sin sentir que estás a dieta.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">🛒</div>
+        <h3>Ingredientes normales</h3>
+        <p class="apagado">Todo lo que necesitas se consigue en el supermercado de tu barrio.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">📱</div>
+        <h3>Siempre a la mano</h3>
+        <p class="apagado">En el celular, la tablet o impreso. Tú eliges.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">👨‍👩‍👧</div>
+        <h3>Variedad de verdad</h3>
+        <p class="apagado">Desayunos, carnes, verduras, panes y postres. Nunca se repite el menú.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     6. OFERTA E PREÇO
+     5. TESTIMONIOS
+     ⚠️ IMPORTANTE — LEE ESTO:
+     Publica SOLO testimonios reales de clientes reales.
+     Inventar testimonios es publicidad engañosa, y es una de las
+     causas más comunes de que Meta rechace o bloquee la cuenta
+     de anuncios.
+     Si todavía no tienes clientes: BORRA esta sección completa
+     (desde <section> hasta </section>) y agrégala después.
      ================================================================ -->
-<section class="faixa faixa--cinza">
-  <div class="caixa">
-    <h2>Quanto custa</h2>
+<section class="franja">
+  <div class="caja">
+    <h2>Lo que dicen quienes ya lo tienen</h2>
+
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"REEMPLAZA: testimonio real de un cliente real, contando qué resultado tuvo."</p>
+      <p class="quien">— Nombre, ciudad</p>
+    </div>
+
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"REEMPLAZA: otro testimonio real. Los mejores mencionan la duda que tenían antes de comprar."</p>
+      <p class="quien">— Nombre, ciudad</p>
+    </div>
+
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>"REEMPLAZA: tercer testimonio real."</p>
+      <p class="quien">— Nombre, ciudad</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     6. BONOS
+     ================================================================ -->
+<section class="franja franja--crema">
+  <div class="caja">
+    <h2>Además, hoy te llevas 10 bonos de regalo</h2>
+    <p class="apagado" style="margin-top:-8px">Todos incluidos sin costo extra en tu compra de hoy.</p>
+
+    <div class="bono"><div class="n">1</div><div><h3>Guía completa de tu freidora de aire</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">2</div><div><h3>20 recetas italianas en airfryer</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">3</div><div><h3>20 recetas mexicanas en airfryer</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">4</div><div><h3>Jugos detox para acompañar</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">5</div><div><h3>Recetas veganas y vegetarianas</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">6</div><div><h3>Panes caseros en freidora de aire</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">7</div><div><h3>Sopas caseras</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">8</div><div><h3>Ensaladas creativas</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">9</div><div><h3>Jugos naturales</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+    <div class="bono"><div class="n">10</div><div><h3>Tabla nutricional de alimentos</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
+  </div>
+</section>
+
+<!-- ================================================================
+     7. OFERTA Y PRECIO
+     ================================================================ -->
+<section class="franja" id="oferta">
+  <div class="caja">
+    <h2 class="centrado">Todo lo que recibes hoy</h2>
+
+    <div class="contador">
+      <p class="titulo">⏳ ESTA OFERTA TERMINA HOY</p>
+      <div class="reloj">
+        <div><div class="num">00</div><div class="rot">horas</div></div>
+        <div><div class="num">00</div><div class="rot">min</div></div>
+        <div><div class="num">00</div><div class="rot">seg</div></div>
+      </div>
+    </div>
 
     <div class="oferta">
-      <p class="de">De R$ 97,00</p>
-      <p class="por"><span>R$</span> 27<span>,00</span></p>
-      <p class="parcela">à vista no Pix ou em até 3x no cartão</p>
+      <table class="suma">
+        <tr><td>Recetario con 150+ recetas</td><td>US$ 40</td></tr>
+        <tr><td>10 bonos de regalo</td><td>US$ 200</td></tr>
+        <tr><td>Actualizaciones futuras</td><td>US$ 20</td></tr>
+        <tr><td>Valor total</td><td>US$ 260</td></tr>
+      </table>
 
-      <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
-      <a class="botao" href="#">COMPRAR AGORA</a>
-      <p class="sob-botao">Compra segura · Acesso enviado por e-mail</p>
+      <p class="antes">Hoy no pagas eso. Ni siquiera <s>US$ 40</s>.</p>
+      <p class="precio"><small>US$</small>20</p>
+      <p class="moneda">Pago único · Puedes pagar en tu moneda local</p>
+
+      <a class="boton" data-checkout href="#">SÍ, QUIERO MI RECETARIO + LOS BONOS</a>
+      <p class="bajo-boton">Compra segura · Acceso enviado a tu correo</p>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     7. GARANTIA
-     A garantia de 7 dias não é opcional: o Código de Defesa do
-     Consumidor (art. 49) dá direito a arrependimento em 7 dias
-     para qualquer compra online. Melhor transformar isso em argumento.
+     8. GARANTÍA
      ================================================================ -->
-<section class="faixa">
-  <div class="caixa">
+<section class="franja franja--crema">
+  <div class="caja">
     <div class="garantia">
-      <h3>Garantia de 7 dias</h3>
+      <h3>🛡️ Garantía de 7 días</h3>
       <p>
-        Se você comprar, acessar e sentir que não era pra você, é só pedir o
-        reembolso em até 7 dias. Devolvemos 100% do valor, sem perguntas.
-        O risco é todo meu.
+        Compra, descarga el recetario y pruébalo. Si no es lo que esperabas, escribes
+        pidiendo el reembolso dentro de los primeros 7 días y te devolvemos el 100% del
+        dinero. Sin preguntas y sin trámites raros.
+      </p>
+      <p class="apagado" style="font-size:16px">
+        Te quedas con los bonos de todas formas.
       </p>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     8. PERGUNTAS FREQUENTES
+     9. PREGUNTAS FRECUENTES
      ================================================================ -->
-<section class="faixa faixa--cinza">
-  <div class="caixa">
-    <h2>Perguntas frequentes</h2>
+<section class="franja">
+  <div class="caja">
+    <h2>Preguntas frecuentes</h2>
 
-    <details>
-      <summary>Como recebo o acesso depois de comprar?</summary>
-      <p>SUBSTITUA: explique o processo. Ex.: "O link chega no seu e-mail em até 5 minutos após a confirmação do pagamento."</p>
-    </details>
+    <details><summary>¿Me llega algo a mi casa?</summary>
+      <p>No. Es un producto 100% digital. No hay envíos ni costos de aduana.</p></details>
 
-    <details>
-      <summary>Serve pra quem está começando do zero?</summary>
-      <p>SUBSTITUA: responda a objeção mais comum de quem tem medo de não conseguir acompanhar.</p>
-    </details>
+    <details><summary>¿Cómo lo recibo?</summary>
+      <p>Apenas se confirma el pago, te llega un correo con el enlace de descarga. Suele tardar pocos minutos.</p></details>
 
-    <details>
-      <summary>Quanto tempo preciso ter disponível?</summary>
-      <p>SUBSTITUA: seja específico e realista. Ex.: "Cerca de 2 horas para ler e aplicar."</p>
-    </details>
+    <details><summary>¿Sirve si nunca he cocinado?</summary>
+      <p>Sí. Las recetas están escritas paso a paso, sin términos técnicos, pensadas para quien recién empieza.</p></details>
 
-    <details>
-      <summary>Por quanto tempo tenho acesso?</summary>
-      <p>SUBSTITUA: diga se é vitalício, por um período, ou se tem atualizações inclusas.</p>
-    </details>
+    <details><summary>¿Funciona con mi modelo de freidora?</summary>
+      <p>Sí. Las recetas usan tiempos y temperaturas estándar que funcionan en cualquier marca de freidora de aire.</p></details>
 
-    <details>
-      <summary>E se eu não gostar?</summary>
-      <p>Você tem 7 dias para pedir reembolso integral, sem precisar justificar.</p>
-    </details>
+    <details><summary>¿Puedo pagar en la moneda de mi país?</summary>
+      <p>Sí. La plataforma de pago convierte automáticamente al valor de tu moneda local.</p></details>
+
+    <details><summary>¿Puedo pagar sin tarjeta de crédito?</summary>
+      <p>REEMPLAZA: confirma en tu checkout de Kiwify qué medios aceptas en cada país y responde aquí.</p></details>
+
+    <details><summary>¿Es un pago único o una suscripción?</summary>
+      <p>Pago único. No se cobra nada de forma recurrente.</p></details>
+
+    <details><summary>¿Por cuánto tiempo tengo acceso?</summary>
+      <p>Para siempre. Descargas los archivos y quedan tuyos.</p></details>
+
+    <details><summary>¿Y si no me gusta?</summary>
+      <p>Tienes 7 días para pedir el reembolso completo, sin necesidad de dar explicaciones.</p></details>
   </div>
 </section>
 
 <!-- ================================================================
-     9. CHAMADA FINAL
+     10. CIERRE
      ================================================================ -->
-<section class="faixa">
-  <div class="caixa">
-    <h2>SUBSTITUA: Retome a promessa principal aqui</h2>
-
-    <p>
-      SUBSTITUA: Um parágrafo curto contrastando os dois caminhos — continuar
-      como está hoje, ou dar o primeiro passo agora.
+<section class="franja franja--oscura">
+  <div class="caja centrado">
+    <h2>Tu freidora puede ser el aparato que más uses en tu cocina</h2>
+    <p class="apagado">
+      O puede seguir guardada en el mueble. La diferencia son 150 recetas y
+      el precio de un almuerzo.
     </p>
 
-    <!-- TROQUE O href="#" PELO LINK DO SEU CHECKOUT -->
-    <a class="botao" href="#">QUERO COMEÇAR AGORA</a>
-    <p class="sob-botao">Acesso imediato · Garantia de 7 dias</p>
+    <div style="max-width:460px;margin:0 auto">
+      <a class="boton" data-checkout href="#">EMPEZAR AHORA POR US$ 20</a>
+      <p class="bajo-boton" style="color:#a8a29e">Acceso inmediato · Garantía de 7 días</p>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>
-    SUBSTITUA: Seu Nome ou Empresa · CNPJ 00.000.000/0001-00<br>
-    Contato: seu@email.com
+    REEMPLAZA: Tu Nombre o Empresa · Contacto: tucorreo@ejemplo.com
   </p>
   <p>
-    Este site não é afiliado ao Facebook, Instagram ou Meta Platforms.
+    Este sitio no forma parte de Facebook, Instagram ni Meta Platforms, Inc.
+    Los resultados dependen del uso que cada persona haga del material.
   </p>
 </footer>
+
+<!-- Barra fija que sigue al usuario en el celular -->
+<div class="barra-fija">
+  <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS — US$ 20</a>
+</div>
+
+<script>
+(function(){
+  /* --- Conecta todos los botones al link de checkout --- */
+  var botones = document.querySelectorAll('[data-checkout]');
+  var link = (typeof LINK_CHECKOUT === 'string' ? LINK_CHECKOUT : '').trim();
+
+  if (link) {
+    botones.forEach(function(b){
+      b.setAttribute('href', link);
+      b.setAttribute('rel', 'noopener');
+    });
+  } else {
+    /* Sin link configurado: avisa en vez de fingir que funciona */
+    document.getElementById('avisoConfig').hidden = false;
+    botones.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.preventDefault();
+        alert('Falta configurar el link de pago.\n\nAbre index.html y pega tu link de Kiwify en LINK_CHECKOUT.');
+      });
+    });
+  }
+
+  /* --- Contador: cuenta hasta el final del día --- */
+  var relojes = document.querySelectorAll('.reloj');
+  if (relojes.length) {
+    var tic = function(){
+      var ahora = new Date();
+      var fin = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 23, 59, 59);
+      var faltan = Math.max(0, Math.floor((fin - ahora) / 1000));
+      var v = [
+        Math.floor(faltan / 3600),
+        Math.floor((faltan % 3600) / 60),
+        faltan % 60
+      ];
+      relojes.forEach(function(r){
+        r.querySelectorAll('.num').forEach(function(c, i){
+          c.textContent = String(v[i]).padStart(2, '0');
+        });
+      });
+    };
+    tic();
+    setInterval(tic, 1000);
+  }
+})();
+</script>
 
 </body>
 </html>
