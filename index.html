@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>150 Recetas para Freidora de Aire — Aprende a usar tu airfryer hoy mismo</title>
-<meta name="description" content="Más de 150 recetas paso a paso para tu freidora de aire, desde desayunos hasta postres. Acceso inmediato + 10 bonos de regalo.">
+<title>150 Recetas para Freidora de Aire — con tiempo y temperatura exactos</title>
+<meta name="description" content="150 recetas mexicanas para tu freidora de aire, con tiempo y temperatura exactos en cada una. Desayunos, botanas, pollo, carnes, mariscos, verduras, antojitos y postres. Acceso inmediato por US$ 7.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="150 Recetas para Freidora de Aire + 10 Bonos de Regalo">
-<meta property="og:description" content="Deja de cocinar siempre lo mismo. Más de 150 recetas paso a paso, con tiempos y temperaturas exactas.">
-<meta property="og:locale" content="es_LA">
+<meta property="og:title" content="150 Recetas para Freidora de Aire — Colección completa">
+<meta property="og:description" content="Deja de hacer solo papas. 150 recetas con tiempo y temperatura exactos, del elote asado a la cochinita pibil.">
+<meta property="og:locale" content="es_MX">
+<meta property="og:image" content="imagenes/costillas-bbq.jpg">
 
 <!-- ==========================================================
      PIXEL DE META (Facebook / Instagram)
@@ -30,140 +31,111 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ==========================================================
      ⬇⬇⬇  LO ÚNICO QUE TIENES QUE CAMBIAR PARA VENDER  ⬇⬇⬇
      Pega aquí el link de tu checkout de Kiwify, entre las comillas.
-     Todos los botones de la página se actualizan solos.
+     Los 5 botones de la página se actualizan solos.
      ========================================================== -->
 <script>
   const LINK_CHECKOUT = "";
 </script>
-<!-- ==========================================================
-     ⬆⬆⬆  FIN DE LA CONFIGURACIÓN  ⬆⬆⬆
-     ========================================================== -->
+<!-- ========================================================== -->
 
 <style>
   :root{
-    --tinta:#1c1917;
-    --suave:#57534e;
-    --linea:#e7e5e4;
-    --crema:#fdf8f3;
-    --acento:#c2410c;
-    --acento-fuerte:#9a3412;
-    --verde:#15803d;
-    --amarillo:#fef3c7;
+    --tinta:#22201e; --suave:#6b6560; --linea:#e6e1db;
+    --naranja:#c0451a; --naranja-osc:#93300f; --naranja-cl:#e0803c;
+    --crema:#fdf6ee; --verde:#15803d; --amarillo:#fdeccd;
     --radio:14px;
   }
-
-  *{box-sizing:border-box}
+  *{box-sizing:border-box;margin:0;padding:0}
 
   body{
-    margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:18px;
-    line-height:1.6;
-    color:var(--tinta);
-    background:#fff;
-    -webkit-font-smoothing:antialiased;
-    padding-bottom:88px; /* espacio para la barra fija del móvil */
+    font-size:18px; line-height:1.6; color:var(--tinta); background:#fff;
+    -webkit-font-smoothing:antialiased; padding-bottom:92px;
   }
-
   img{max-width:100%;height:auto;display:block}
 
-  .franja{padding:52px 20px}
+  .franja{padding:54px 20px}
   .franja--crema{background:var(--crema)}
   .franja--oscura{background:var(--tinta);color:#fff}
-  .franja--oscura .apagado{color:#d6d3d1}
+  .franja--oscura .apagado{color:#c9c2ba}
   .caja{max-width:680px;margin:0 auto}
 
-  h1{font-size:clamp(28px,6.6vw,42px);line-height:1.15;letter-spacing:-.02em;margin:0 0 18px;font-weight:800}
-  h2{font-size:clamp(24px,5.2vw,32px);line-height:1.22;letter-spacing:-.015em;margin:0 0 20px;font-weight:800}
-  h3{font-size:19px;margin:0 0 8px;font-weight:700}
-  p{margin:0 0 18px}
+  h1{font-size:clamp(29px,6.8vw,44px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:18px}
+  h2{font-size:clamp(24px,5.2vw,33px);line-height:1.2;letter-spacing:-.015em;font-weight:800;margin-bottom:20px}
+  h3{font-size:19px;font-weight:700;margin-bottom:8px}
+  p{margin-bottom:18px}
   .apagado{color:var(--suave)}
   .centrado{text-align:center}
 
   .bajada{font-size:clamp(17px,4vw,20px);color:var(--suave);margin-bottom:28px}
 
-  .etiqueta{
-    display:inline-block;background:var(--amarillo);color:#78350f;
+  .etiqueta{display:inline-block;background:var(--amarillo);color:#8a3b12;
     padding:6px 14px;border-radius:999px;font-size:14px;font-weight:800;
-    letter-spacing:.02em;margin-bottom:18px
-  }
+    letter-spacing:.02em;margin-bottom:18px}
 
-  /* ---------- Botones ---------- */
-  .boton{
-    display:block;background:var(--acento);color:#fff;text-decoration:none;
+  /* ---------- botones ---------- */
+  .boton{display:block;background:var(--naranja);color:#fff;text-decoration:none;
     text-align:center;font-size:clamp(17px,3.6vw,20px);font-weight:800;
     padding:20px 22px;border-radius:var(--radio);line-height:1.3;
-    box-shadow:0 3px 0 var(--acento-fuerte);
+    box-shadow:0 3px 0 var(--naranja-osc);
     transition:transform .06s ease,background .15s ease;
-    animation:latido 2.6s ease-in-out infinite;
-  }
-  .boton:hover{background:var(--acento-fuerte)}
+    animation:latido 3s ease-in-out infinite}
+  .boton:hover{background:var(--naranja-osc)}
   .boton:active{transform:translateY(3px);box-shadow:none}
-  @keyframes latido{0%,92%,100%{transform:scale(1)}96%{transform:scale(1.025)}}
+  @keyframes latido{0%,93%,100%{transform:scale(1)}96%{transform:scale(1.02)}}
   @media (prefers-reduced-motion:reduce){.boton{animation:none}}
-
   .bajo-boton{text-align:center;font-size:15px;color:var(--suave);margin-top:12px}
 
-  /* ---------- Contador ---------- */
-  .contador{
-    background:var(--tinta);color:#fff;border-radius:var(--radio);
-    padding:18px;text-align:center;margin-bottom:24px
-  }
-  .contador .titulo{font-size:14px;font-weight:800;letter-spacing:.08em;color:#fbbf24;margin:0 0 10px}
+  /* ---------- contador ---------- */
+  .contador{background:var(--tinta);color:#fff;border-radius:var(--radio);
+    padding:18px;text-align:center;margin-bottom:24px}
+  .contador .titulo{font-size:13px;font-weight:800;letter-spacing:.08em;color:#f0a860;margin-bottom:10px}
   .reloj{display:flex;gap:10px;justify-content:center}
-  .reloj div{background:#292524;border-radius:8px;padding:8px 4px;min-width:62px}
+  .reloj div{background:#3a3531;border-radius:8px;padding:8px 4px;min-width:62px}
   .reloj .num{font-size:26px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-  .reloj .rot{font-size:11px;color:#a8a29e;text-transform:uppercase;letter-spacing:.05em}
+  .reloj .rot{font-size:11px;color:#b3aaa2;text-transform:uppercase;letter-spacing:.05em}
 
-  /* ---------- Listas ---------- */
-  .lista{list-style:none;padding:0;margin:0 0 26px}
+  /* ---------- listas ---------- */
+  .lista{list-style:none;margin-bottom:26px}
   .lista li{padding-left:34px;position:relative;margin-bottom:13px}
   .lista li::before{content:"✓";position:absolute;left:0;top:-2px;color:var(--verde);font-weight:800;font-size:21px}
-  .lista--dolor li::before{content:"✕";color:#dc2626}
+  .lista--dolor li::before{content:"✕";color:#c62828}
 
-  /* ---------- Tarjetas ---------- */
+  /* ---------- galería ---------- */
+  .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:26px}
+  .galeria img{aspect-ratio:1;object-fit:cover;border-radius:8px}
+  @media(max-width:420px){.galeria{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- categorías ---------- */
+  .cats{border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;margin-bottom:26px}
+  .cats div{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:14px 18px;border-bottom:1px solid var(--linea);font-size:17px}
+  .cats div:last-child{border-bottom:0}
+  .cats b{font-weight:700}
+  .cats i{font-style:normal;font-weight:800;color:var(--naranja);white-space:nowrap}
+
+  /* ---------- tarjetas ---------- */
   .rejilla{display:grid;gap:14px;margin-bottom:26px}
   @media(min-width:560px){.rejilla--2{grid-template-columns:1fr 1fr}}
-
   .tarjeta{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px 22px}
   .tarjeta p:last-child{margin-bottom:0}
   .icono{font-size:26px;line-height:1;margin-bottom:10px}
 
-  /* ---------- Marcadores de imagen ---------- */
-  .foto{
-    border:2px dashed #d6d3d1;border-radius:var(--radio);background:var(--crema);
-    aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
-    text-align:center;padding:16px;color:#a8a29e;font-size:14px;font-weight:600
-  }
-  .foto--ancha{aspect-ratio:16/9}
-
-  /* ---------- Testimonios ---------- */
-  .testimonio{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px 22px;margin-bottom:14px}
-  .estrellas{color:#f59e0b;font-size:16px;letter-spacing:2px;margin-bottom:8px}
-  .testimonio p{margin:0 0 12px;font-size:17px}
-  .quien{font-size:15px;color:var(--suave);font-weight:700;margin:0}
-
-  /* ---------- Bonos ---------- */
-  .bono{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--linea);border-radius:12px;padding:16px 18px;margin-bottom:10px;background:#fff}
-  .bono .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--acento);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
-  .bono h3{font-size:17px;margin:0 0 2px}
-  .bono .valor{font-size:14px;color:var(--verde);font-weight:800;margin:0}
-
-  /* ---------- Oferta ---------- */
-  .oferta{border:3px solid var(--acento);border-radius:18px;padding:30px 24px;text-align:center;background:#fff}
-  .antes{color:var(--suave);font-size:18px;margin:0}
-  .antes s{opacity:.75}
-  .precio{font-size:clamp(46px,12vw,62px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:6px 0 2px}
-  .precio small{font-size:.42em;font-weight:700;vertical-align:.55em}
+  /* ---------- oferta ---------- */
+  .oferta{border:3px solid var(--naranja);border-radius:18px;padding:30px 24px;text-align:center;background:#fff}
+  .antes{color:var(--suave);font-size:18px;margin-bottom:0}
+  .precio{font-size:clamp(48px,13vw,66px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:6px 0 2px}
+  .precio small{font-size:.4em;font-weight:700;vertical-align:.6em}
   .moneda{color:var(--suave);font-size:16px;margin-bottom:24px}
 
   .suma{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:16px;text-align:left}
-  .suma td{padding:9px 0;border-bottom:1px solid var(--linea)}
+  .suma td{padding:10px 0;border-bottom:1px solid var(--linea)}
   .suma td:last-child{text-align:right;white-space:nowrap;font-weight:700}
   .suma tr:last-child td{border-bottom:0;border-top:2px solid var(--tinta);font-weight:800;font-size:18px;padding-top:12px}
 
-  /* ---------- Garantía ---------- */
-  .garantia{border-left:5px solid var(--verde);background:var(--crema);padding:22px 24px;border-radius:0 var(--radio) var(--radio) 0}
+  /* ---------- garantía ---------- */
+  .garantia{border-left:5px solid var(--verde);background:var(--crema);
+    padding:22px 24px;border-radius:0 var(--radio) var(--radio) 0}
   .garantia p:last-child{margin-bottom:0}
 
   /* ---------- FAQ ---------- */
@@ -174,75 +146,75 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
   details[open] summary::after{content:"−"}
   details p{margin:12px 0 0;color:var(--suave);font-size:17px}
 
-  /* ---------- Barra fija móvil ---------- */
-  .barra-fija{
-    position:fixed;left:0;right:0;bottom:0;z-index:50;
+  /* ---------- barra fija ---------- */
+  .barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:50;
     background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
     border-top:1px solid var(--linea);padding:12px 16px;
-    box-shadow:0 -4px 16px rgba(0,0,0,.07)
-  }
+    box-shadow:0 -4px 16px rgba(0,0,0,.07)}
   .barra-fija .boton{padding:16px;font-size:17px;animation:none}
   @media(min-width:900px){.barra-fija{display:none}body{padding-bottom:0}}
 
-  /* ---------- Aviso de configuración ---------- */
-  .aviso-config{
-    background:#dc2626;color:#fff;text-align:center;
-    padding:12px 16px;font-size:15px;font-weight:700
-  }
+  .aviso-config{background:#c62828;color:#fff;text-align:center;padding:12px 16px;font-size:15px;font-weight:700}
 
-  footer{padding:38px 20px 28px;text-align:center;font-size:14px;color:var(--suave);border-top:1px solid var(--linea);line-height:1.55}
-  footer p{margin:0 0 12px}
+  footer{padding:38px 20px 28px;text-align:center;font-size:14px;color:var(--suave);
+    border-top:1px solid var(--linea);line-height:1.55}
+  footer p{margin-bottom:12px}
 </style>
 </head>
 <body>
 
-<!-- Aviso que aparece solo si falta configurar el link. Desaparece solo. -->
 <div class="aviso-config" id="avisoConfig" hidden>
-  ⚠️ Falta pegar tu link de Kiwify en el archivo index.html (busca LINK_CHECKOUT)
+  ⚠️ Falta pegar tu link de Kiwify en index.html (busca LINK_CHECKOUT)
 </div>
 
 <!-- ================================================================
-     1. ENCABEZADO — el dolor + la promesa
+     1. ENCABEZADO
      ================================================================ -->
 <section class="franja">
   <div class="caja">
-    <span class="etiqueta">🔥 50% DE DESCUENTO + 10 BONOS DE REGALO</span>
+    <span class="etiqueta">🔥 PRECIO DE LANZAMIENTO</span>
 
-    <h1>¿Compraste una freidora de aire y terminaste cocinando siempre lo mismo?</h1>
+    <h1>¿Tu freidora de aire nada más sirve para hacer papas?</h1>
 
     <p class="bajada">
-      Más de <strong>150 recetas paso a paso</strong> con tiempos y temperaturas exactas
-      para tu airfryer. Desde desayunos rápidos hasta postres — sin adivinar, sin quemar
-      la comida y sin pasar horas en la cocina.
+      <strong>150 recetas</strong> con el tiempo y la temperatura exactos de cada una.
+      Del elote asado con cotija a la cochinita pibil, de las alitas buffalo al volcán
+      de chocolate. Sin «hasta que dore», sin adivinar.
     </p>
 
-    <div class="foto foto--ancha" style="margin-bottom:26px">
-      IMAGEN PRINCIPAL<br><small>Mockup del ebook en celular y tablet</small>
+    <div class="galeria">
+      <img src="imagenes/costillas-bbq.jpg" alt="Costillas BBQ en freidora de aire" loading="lazy">
+      <img src="imagenes/elote.jpg" alt="Elotes asados" loading="lazy">
+      <img src="imagenes/churros.jpg" alt="Churros en freidora de aire" loading="lazy">
+      <img src="imagenes/pollo-entero.jpg" alt="Pollo rostizado" loading="lazy">
+      <img src="imagenes/camarones-ajo.jpg" alt="Camarones al ajo" loading="lazy">
+      <img src="imagenes/volcan-chocolate.jpg" alt="Volcán de chocolate" loading="lazy">
     </div>
 
-    <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS AHORA</a>
+    <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS</a>
     <p class="bajo-boton">Acceso inmediato · Pago único · Garantía de 7 días</p>
   </div>
 </section>
 
 <!-- ================================================================
-     2. IDENTIFICACIÓN — que se reconozca en el problema
+     2. EL PROBLEMA
      ================================================================ -->
 <section class="franja franja--crema">
   <div class="caja">
-    <h2>Si te pasa alguna de estas cosas, sigue leyendo</h2>
+    <h2>Si te pasa alguna de estas, sigue leyendo</h2>
 
     <ul class="lista lista--dolor">
-      <li>Usas la freidora solo para papas fritas y nada más</li>
-      <li>Buscas recetas en internet y la mitad no te sale como en la foto</li>
-      <li>Nunca sabes cuántos minutos ni a qué temperatura poner cada cosa</li>
+      <li>La usas para papas y nuggets, y de ahí no pasas</li>
+      <li>Buscas recetas en internet y la mitad no dice ni tiempo ni temperatura</li>
       <li>Se te quema por fuera y queda crudo por dentro</li>
-      <li>La tienes guardada en un mueble porque te da flojera pensar qué hacer</li>
+      <li>Los empanizados se te caen o salen blancos y con sabor a crudo</li>
+      <li>Está guardada en la alacena porque da flojera pensar qué hacer</li>
     </ul>
 
     <p>
-      No es que cocines mal. Es que nadie te dio un manual. La freidora de aire cocina
-      distinto a un horno y a una sartén — y sin los tiempos correctos, cualquiera falla.
+      No cocinas mal. Lo que pasa es que la freidora de aire cocina distinto al horno y
+      al sartén, y nadie te dio los números. Con los tiempos y temperaturas correctos,
+      cualquiera la usa bien desde el primer día.
     </p>
   </div>
 </section>
@@ -252,136 +224,120 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
      ================================================================ -->
 <section class="franja">
   <div class="caja">
-    <h2>150 Delicias en Freidora de Aire</h2>
+    <h2>150 Recetas para Freidora de Aire</h2>
 
     <p>
-      Es un recetario digital con <strong>más de 150 recetas probadas</strong>, organizadas
-      por categoría y escritas en lenguaje simple. Cada una trae los ingredientes, el paso
-      a paso, y lo más importante: <strong>el tiempo y la temperatura exactos</strong>.
+      Un recetario digital con <strong>150 recetas organizadas en 9 categorías</strong>,
+      escritas en español y con ingredientes que consigues en cualquier súper de México.
     </p>
 
     <p>
-      Lo abres en el celular mientras cocinas. Eliges la receta, sigues los pasos y listo.
-      Sin cursos, sin videos largos, sin complicaciones.
+      Cada receta trae <strong>tiempo, temperatura, rendimiento y nivel de dificultad</strong>,
+      los ingredientes, el paso a paso numerado y un consejo con el detalle que hace la
+      diferencia. Lo abres en el celular mientras cocinas.
     </p>
 
-    <div class="rejilla rejilla--2">
-      <div class="foto">FOTO 1<br><small>Plato terminado</small></div>
-      <div class="foto">FOTO 2<br><small>Plato terminado</small></div>
-      <div class="foto">FOTO 3<br><small>Página interna del ebook</small></div>
-      <div class="foto">FOTO 4<br><small>Página interna del ebook</small></div>
+    <div class="cats">
+      <div><b>Desayunos</b><i>20 recetas</i></div>
+      <div><b>Papas y botanas</b><i>20 recetas</i></div>
+      <div><b>Pollo</b><i>25 recetas</i></div>
+      <div><b>Carne de res</b><i>15 recetas</i></div>
+      <div><b>Cerdo</b><i>15 recetas</i></div>
+      <div><b>Pescados y mariscos</b><i>15 recetas</i></div>
+      <div><b>Verduras y guarniciones</b><i>20 recetas</i></div>
+      <div><b>Comida mexicana</b><i>10 recetas</i></div>
+      <div><b>Postres</b><i>10 recetas</i></div>
     </div>
 
-    <a class="boton" data-checkout href="#oferta">LO QUIERO CON EL DESCUENTO</a>
+    <a class="boton" data-checkout href="#oferta">LO QUIERO POR US$ 7</a>
   </div>
 </section>
 
 <!-- ================================================================
-     4. BENEFICIOS
+     4. DIFERENCIALES
      ================================================================ -->
 <section class="franja franja--crema">
   <div class="caja">
-    <h2>Lo que cambia desde el primer día</h2>
+    <h2>Por qué este recetario y no otro</h2>
 
     <div class="rejilla rejilla--2">
       <div class="tarjeta">
-        <div class="icono">⏱️</div>
-        <h3>Comidas en 15 minutos</h3>
-        <p class="apagado">Recetas pensadas para días con prisa, no para chefs con tiempo libre.</p>
-      </div>
-      <div class="tarjeta">
         <div class="icono">🌡️</div>
-        <h3>Nunca más adivinar</h3>
-        <p class="apagado">Cada receta con su temperatura y sus minutos exactos.</p>
+        <h3>Números exactos</h3>
+        <p class="apagado">Cada receta con su temperatura y sus minutos. Nunca vas a leer «hasta que dore».</p>
       </div>
       <div class="tarjeta">
-        <div class="icono">🥗</div>
-        <h3>Menos aceite, mismo sabor</h3>
-        <p class="apagado">Comida más liviana sin sentir que estás a dieta.</p>
+        <div class="icono">🇲🇽</div>
+        <h3>Cocina mexicana</h3>
+        <p class="apagado">Elotes con cotija, esquites, carnitas, cochinita pibil, sopes, gorditas, chiles rellenos.</p>
       </div>
       <div class="tarjeta">
         <div class="icono">🛒</div>
-        <h3>Ingredientes normales</h3>
-        <p class="apagado">Todo lo que necesitas se consigue en el supermercado de tu barrio.</p>
+        <h3>Ingredientes del súper</h3>
+        <p class="apagado">Nada que tengas que pedir por internet. Todo se consigue en la tienda de la esquina.</p>
+      </div>
+      <div class="tarjeta">
+        <div class="icono">💡</div>
+        <h3>Te explica el porqué</h3>
+        <p class="apagado">Por qué la salsa BBQ va al final, por qué el camarón se saca en forma de C, por qué el brownie sale antes.</p>
       </div>
       <div class="tarjeta">
         <div class="icono">📱</div>
-        <h3>Siempre a la mano</h3>
-        <p class="apagado">En el celular, la tablet o impreso. Tú eliges.</p>
+        <h3>En el celular</h3>
+        <p class="apagado">PDF que abres donde sea. También lo puedes imprimir si prefieres.</p>
       </div>
       <div class="tarjeta">
-        <div class="icono">👨‍👩‍👧</div>
-        <h3>Variedad de verdad</h3>
-        <p class="apagado">Desayunos, carnes, verduras, panes y postres. Nunca se repite el menú.</p>
+        <div class="icono">🗂️</div>
+        <h3>Por categorías</h3>
+        <p class="apagado">Además del volumen completo, recibes los 9 recetarios por separado para encontrar todo más rápido.</p>
       </div>
+    </div>
+
+    <div class="galeria">
+      <img src="imagenes/papas-gajo.jpg" alt="Papas gajo" loading="lazy">
+      <img src="imagenes/aros-cebolla.jpg" alt="Aros de cebolla" loading="lazy">
+      <img src="imagenes/queso-asado.jpg" alt="Queso panela dorado" loading="lazy">
+      <img src="imagenes/hamburguesa.jpg" alt="Hamburguesa casera" loading="lazy">
+      <img src="imagenes/coliflor-gratinada.jpg" alt="Coliflor rostizada" loading="lazy">
+      <img src="imagenes/pescado-empanizado.jpg" alt="Tilapia empanizada" loading="lazy">
+      <img src="imagenes/camote-rostizado.jpg" alt="Camote rostizado" loading="lazy">
+      <img src="imagenes/bunuelos.jpg" alt="Buñuelos" loading="lazy">
+      <img src="imagenes/donas.jpg" alt="Donas en freidora de aire" loading="lazy">
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     5. TESTIMONIOS
-     ⚠️ IMPORTANTE — LEE ESTO:
-     Publica SOLO testimonios reales de clientes reales.
-     Inventar testimonios es publicidad engañosa, y es una de las
-     causas más comunes de que Meta rechace o bloquee la cuenta
-     de anuncios.
-     Si todavía no tienes clientes: BORRA esta sección completa
-     (desde <section> hasta </section>) y agrégala después.
+     5. LO QUE RECIBES
      ================================================================ -->
 <section class="franja">
   <div class="caja">
-    <h2>Lo que dicen quienes ya lo tienen</h2>
+    <h2>Lo que recibes</h2>
 
-    <div class="testimonio">
-      <div class="estrellas">★★★★★</div>
-      <p>"REEMPLAZA: testimonio real de un cliente real, contando qué resultado tuvo."</p>
-      <p class="quien">— Nombre, ciudad</p>
-    </div>
+    <ul class="lista">
+      <li><strong>Colección completa — 150 recetas</strong>, 162 páginas con índice para encontrar cualquier receta en segundos</li>
+      <li><strong>Los 9 recetarios por categoría</strong> en archivos separados, para llevar solo el que necesitas</li>
+      <li><strong>Guía de arranque</strong> — las cinco reglas de la freidora de aire y los errores que arruinan la comida</li>
+      <li><strong>Tabla de términos y temperaturas</strong> para carne, pollo y pescado</li>
+      <li><strong>Bono: Freidora de aire para principiantes</strong> — 21 recetas de cinco ingredientes o menos, para empezar hoy mismo</li>
+    </ul>
 
-    <div class="testimonio">
-      <div class="estrellas">★★★★★</div>
-      <p>"REEMPLAZA: otro testimonio real. Los mejores mencionan la duda que tenían antes de comprar."</p>
-      <p class="quien">— Nombre, ciudad</p>
-    </div>
-
-    <div class="testimonio">
-      <div class="estrellas">★★★★★</div>
-      <p>"REEMPLAZA: tercer testimonio real."</p>
-      <p class="quien">— Nombre, ciudad</p>
-    </div>
+    <a class="boton" data-checkout href="#oferta">QUIERO GARANTIZAR EL MÍO</a>
   </div>
 </section>
 
 <!-- ================================================================
-     6. BONOS
+     6. OFERTA
+     ⚠️ El precio «regular» de US$ 19 tiene que ser real: es el precio
+     al que vas a vender cuando termine el lanzamiento. Anunciar un
+     precio anterior que nunca cobraste es publicidad engañosa.
      ================================================================ -->
-<section class="franja franja--crema">
+<section class="franja franja--crema" id="oferta">
   <div class="caja">
-    <h2>Además, hoy te llevas 10 bonos de regalo</h2>
-    <p class="apagado" style="margin-top:-8px">Todos incluidos sin costo extra en tu compra de hoy.</p>
-
-    <div class="bono"><div class="n">1</div><div><h3>Guía completa de tu freidora de aire</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">2</div><div><h3>20 recetas italianas en airfryer</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">3</div><div><h3>20 recetas mexicanas en airfryer</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">4</div><div><h3>Jugos detox para acompañar</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">5</div><div><h3>Recetas veganas y vegetarianas</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">6</div><div><h3>Panes caseros en freidora de aire</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">7</div><div><h3>Sopas caseras</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">8</div><div><h3>Ensaladas creativas</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">9</div><div><h3>Jugos naturales</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-    <div class="bono"><div class="n">10</div><div><h3>Tabla nutricional de alimentos</h3><p class="valor">Valor US$ 20 — GRATIS</p></div></div>
-  </div>
-</section>
-
-<!-- ================================================================
-     7. OFERTA Y PRECIO
-     ================================================================ -->
-<section class="franja" id="oferta">
-  <div class="caja">
-    <h2 class="centrado">Todo lo que recibes hoy</h2>
+    <h2 class="centrado">Precio de lanzamiento</h2>
 
     <div class="contador">
-      <p class="titulo">⏳ ESTA OFERTA TERMINA HOY</p>
+      <p class="titulo">⏳ LA OFERTA TERMINA HOY</p>
       <div class="reloj">
         <div><div class="num">00</div><div class="rot">horas</div></div>
         <div><div class="num">00</div><div class="rot">min</div></div>
@@ -391,68 +347,68 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 
     <div class="oferta">
       <table class="suma">
-        <tr><td>Recetario con 150+ recetas</td><td>US$ 40</td></tr>
-        <tr><td>10 bonos de regalo</td><td>US$ 200</td></tr>
-        <tr><td>Actualizaciones futuras</td><td>US$ 20</td></tr>
-        <tr><td>Valor total</td><td>US$ 260</td></tr>
+        <tr><td>Colección completa — 150 recetas</td><td>US$ 14</td></tr>
+        <tr><td>9 recetarios por categoría</td><td>US$ 9</td></tr>
+        <tr><td>Bono: Principiantes (21 recetas)</td><td>US$ 5</td></tr>
+        <tr><td>Valor total</td><td>US$ 28</td></tr>
       </table>
 
-      <p class="antes">Hoy no pagas eso. Ni siquiera <s>US$ 40</s>.</p>
-      <p class="precio"><small>US$</small>20</p>
-      <p class="moneda">Pago único · Puedes pagar en tu moneda local</p>
+      <p class="antes">Hoy, todo por</p>
+      <p class="precio"><small>US$</small>7</p>
+      <p class="moneda">Pago único · Puedes pagar en pesos mexicanos</p>
 
-      <a class="boton" data-checkout href="#">SÍ, QUIERO MI RECETARIO + LOS BONOS</a>
+      <a class="boton" data-checkout href="#">SÍ, QUIERO LAS 150 RECETAS</a>
       <p class="bajo-boton">Compra segura · Acceso enviado a tu correo</p>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     8. GARANTÍA
+     7. GARANTÍA
      ================================================================ -->
-<section class="franja franja--crema">
+<section class="franja">
   <div class="caja">
     <div class="garantia">
       <h3>🛡️ Garantía de 7 días</h3>
       <p>
-        Compra, descarga el recetario y pruébalo. Si no es lo que esperabas, escribes
-        pidiendo el reembolso dentro de los primeros 7 días y te devolvemos el 100% del
-        dinero. Sin preguntas y sin trámites raros.
+        Compra, descarga el recetario y úsalo. Si en 7 días sientes que no era para ti,
+        escribes pidiendo el reembolso y te devolvemos el 100% de tu dinero. Sin preguntas
+        y sin trámites raros.
       </p>
       <p class="apagado" style="font-size:16px">
-        Te quedas con los bonos de todas formas.
+        Te quedas con el bono de todas formas.
       </p>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     9. PREGUNTAS FRECUENTES
+     8. FAQ
      ================================================================ -->
-<section class="franja">
+<section class="franja franja--crema">
   <div class="caja">
     <h2>Preguntas frecuentes</h2>
 
     <details><summary>¿Me llega algo a mi casa?</summary>
-      <p>No. Es un producto 100% digital. No hay envíos ni costos de aduana.</p></details>
+      <p>No. Es un producto 100% digital, en PDF. No hay envíos ni costos de aduana.</p></details>
 
     <details><summary>¿Cómo lo recibo?</summary>
-      <p>Apenas se confirma el pago, te llega un correo con el enlace de descarga. Suele tardar pocos minutos.</p></details>
+      <p>Apenas se confirma el pago te llega un correo con el enlace de descarga. Normalmente tarda unos minutos. Revisa también la carpeta de spam.</p></details>
+
+    <details><summary>¿Sirve para cualquier marca de freidora?</summary>
+      <p>Sí. Las recetas usan tiempos y temperaturas estándar que funcionan en cualquier modelo. Cada aparato tiene su potencia, y por eso varias recetas incluyen cómo ajustar si la tuya calienta más o menos.</p></details>
 
     <details><summary>¿Sirve si nunca he cocinado?</summary>
-      <p>Sí. Las recetas están escritas paso a paso, sin términos técnicos, pensadas para quien recién empieza.</p></details>
+      <p>Sí. El recetario abre con las cinco reglas de la freidora de aire y los errores más comunes, y el bono de principiantes tiene 21 recetas de cinco ingredientes o menos.</p></details>
 
-    <details><summary>¿Funciona con mi modelo de freidora?</summary>
-      <p>Sí. Las recetas usan tiempos y temperaturas estándar que funcionan en cualquier marca de freidora de aire.</p></details>
-
-    <details><summary>¿Puedo pagar en la moneda de mi país?</summary>
-      <p>Sí. La plataforma de pago convierte automáticamente al valor de tu moneda local.</p></details>
+    <details><summary>¿Puedo pagar en pesos?</summary>
+      <p>Sí. La plataforma de pago convierte automáticamente a tu moneda local al momento de la compra.</p></details>
 
     <details><summary>¿Puedo pagar sin tarjeta de crédito?</summary>
-      <p>REEMPLAZA: confirma en tu checkout de Kiwify qué medios aceptas en cada país y responde aquí.</p></details>
+      <p>REEMPLAZA: revisa en tu checkout de Kiwify qué métodos aceptas en México (OXXO, SPEI, tarjeta de débito) y responde aquí exactamente cuáles.</p></details>
 
-    <details><summary>¿Es un pago único o una suscripción?</summary>
-      <p>Pago único. No se cobra nada de forma recurrente.</p></details>
+    <details><summary>¿Es pago único o suscripción?</summary>
+      <p>Pago único de US$ 7. No se cobra nada de forma recurrente.</p></details>
 
     <details><summary>¿Por cuánto tiempo tengo acceso?</summary>
       <p>Para siempre. Descargas los archivos y quedan tuyos.</p></details>
@@ -463,41 +419,38 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 </section>
 
 <!-- ================================================================
-     10. CIERRE
+     9. CIERRE
      ================================================================ -->
 <section class="franja franja--oscura">
   <div class="caja centrado">
-    <h2>Tu freidora puede ser el aparato que más uses en tu cocina</h2>
+    <h2>Tu freidora puede ser el aparato que más uses en la cocina</h2>
     <p class="apagado">
-      O puede seguir guardada en el mueble. La diferencia son 150 recetas y
-      el precio de un almuerzo.
+      O puede seguir guardada en la alacena. La diferencia son 150 recetas
+      y menos de lo que cuesta una comida.
     </p>
 
     <div style="max-width:460px;margin:0 auto">
-      <a class="boton" data-checkout href="#">EMPEZAR AHORA POR US$ 20</a>
-      <p class="bajo-boton" style="color:#a8a29e">Acceso inmediato · Garantía de 7 días</p>
+      <a class="boton" data-checkout href="#">EMPEZAR AHORA POR US$ 7</a>
+      <p class="bajo-boton" style="color:#b3aaa2">Acceso inmediato · Garantía de 7 días</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>
-    REEMPLAZA: Tu Nombre o Empresa · Contacto: tucorreo@ejemplo.com
-  </p>
+  <p>REEMPLAZA: Tu Nombre o Empresa · Contacto: tucorreo@ejemplo.com</p>
   <p>
     Este sitio no forma parte de Facebook, Instagram ni Meta Platforms, Inc.
     Los resultados dependen del uso que cada persona haga del material.
   </p>
 </footer>
 
-<!-- Barra fija que sigue al usuario en el celular -->
 <div class="barra-fija">
-  <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS — US$ 20</a>
+  <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS — US$ 7</a>
 </div>
 
 <script>
 (function(){
-  /* --- Conecta todos los botones al link de checkout --- */
+  /* --- Conecta todos los botones al checkout --- */
   var botones = document.querySelectorAll('[data-checkout]');
   var link = (typeof LINK_CHECKOUT === 'string' ? LINK_CHECKOUT : '').trim();
 
@@ -507,7 +460,6 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
       b.setAttribute('rel', 'noopener');
     });
   } else {
-    /* Sin link configurado: avisa en vez de fingir que funciona */
     document.getElementById('avisoConfig').hidden = false;
     botones.forEach(function(b){
       b.addEventListener('click', function(e){
@@ -517,18 +469,14 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
     });
   }
 
-  /* --- Contador: cuenta hasta el final del día --- */
+  /* --- Contador hasta el final del día --- */
   var relojes = document.querySelectorAll('.reloj');
   if (relojes.length) {
     var tic = function(){
       var ahora = new Date();
       var fin = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 23, 59, 59);
       var faltan = Math.max(0, Math.floor((fin - ahora) / 1000));
-      var v = [
-        Math.floor(faltan / 3600),
-        Math.floor((faltan % 3600) / 60),
-        faltan % 60
-      ];
+      var v = [Math.floor(faltan/3600), Math.floor((faltan%3600)/60), faltan%60];
       relojes.forEach(function(r){
         r.querySelectorAll('.num').forEach(function(c, i){
           c.textContent = String(v[i]).padStart(2, '0');
