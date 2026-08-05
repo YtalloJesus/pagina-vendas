@@ -12,6 +12,12 @@
 <meta property="og:description" content="Deja de hacer solo papas. 150 recetas con tiempo y temperatura exactos, del elote asado a la cochinita pibil.">
 <meta property="og:locale" content="es_MX">
 <meta property="og:image" content="imagenes/costillas-bbq.jpg">
+<meta name="theme-color" content="#16130F">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="imagenes/costillas-bbq.jpg">
 
 <!-- ==========================================================
      PIXEL DE META (Facebook / Instagram)
@@ -31,7 +37,7 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ==========================================================
      ⬇⬇⬇  LO ÚNICO QUE TIENES QUE CAMBIAR PARA VENDER  ⬇⬇⬇
      Pega aquí el link de tu checkout de Kiwify, entre las comillas.
-     Los 5 botones de la página se actualizan solos.
+     Todos los botones de la página se actualizan solos.
      ========================================================== -->
 <script>
   const LINK_CHECKOUT = "";
@@ -39,270 +45,892 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ========================================================== -->
 
 <style>
-  :root{
-    --tinta:#22201e; --suave:#6b6560; --linea:#e6e1db;
-    --naranja:#c0451a; --naranja-osc:#93300f; --naranja-cl:#e0803c;
-    --crema:#fdf6ee; --verde:#15803d; --amarillo:#fdeccd;
-    --radio:14px;
+/* ===================================================================
+   1. SISTEMA — tokens, escala de espacio, tipografía
+   =================================================================== */
+:root{
+  /* --- tinta y neutros cálidos --- */
+  --tinta:#16130F;
+  --tinta-90:#221E19;
+  --tinta-70:#3A342D;
+  --suave:#6E6760;
+  --tenue:#9C948B;
+  --linea:rgba(22,19,15,.10);
+  --linea-fuerte:rgba(22,19,15,.16);
+  --blanco:#FFFDFB;
+  --nieve:#F6F3EF;
+  --nieve-2:#EFEBE5;
+
+  /* --- acentos: rojo freidora, ámbar crocante --- */
+  --rojo:#C0341A;
+  --rojo-osc:#9C2712;
+  --rojo-luz:rgba(192,52,26,.08);
+  --ambar:#D9922F;
+  --ambar-luz:#F7E7CB;
+  --verde:#1F7A45;
+
+  /* --- ritmo de espacio, base 4 --- */
+  --e1:4px;  --e2:8px;  --e3:12px; --e4:16px; --e5:24px;
+  --e6:32px; --e7:48px; --e8:64px; --e9:96px; --e10:136px;
+
+  /* --- radios --- */
+  --r-xs:8px; --r-s:12px; --r-m:18px; --r-l:26px; --r-xl:36px;
+
+  /* --- sombras en capas, muy discretas --- */
+  --s1:0 1px 2px rgba(22,19,15,.04), 0 1px 1px rgba(22,19,15,.03);
+  --s2:0 2px 4px rgba(22,19,15,.04), 0 6px 14px rgba(22,19,15,.05);
+  --s3:0 4px 8px rgba(22,19,15,.05), 0 16px 34px rgba(22,19,15,.07);
+  --s4:0 8px 18px rgba(22,19,15,.07), 0 32px 64px rgba(22,19,15,.10);
+
+  --curva:cubic-bezier(.22,.61,.36,1);
+  --ancho:1160px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--tinta);
+  background:var(--blanco);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"cv02","cv03","cv04","cv11";
+  overflow-x:hidden;
+}
+@media(min-width:900px){body{font-size:18px}}
+
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+/* ---------- escala tipográfica ---------- */
+.display{
+  font-size:clamp(38px,7.4vw,80px);
+  line-height:1.02;
+  letter-spacing:-.042em;
+  font-weight:800;
+}
+h2,.h2{
+  font-size:clamp(28px,4.6vw,50px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  font-weight:750;
+}
+h3,.h3{font-size:19px;line-height:1.35;letter-spacing:-.015em;font-weight:650}
+.lead{
+  font-size:clamp(17px,2.1vw,21px);
+  line-height:1.6;
+  color:var(--suave);
+  font-weight:380;
+  letter-spacing:-.012em;
+}
+p{margin-bottom:var(--e4)}
+p:last-child{margin-bottom:0}
+strong{font-weight:650;color:var(--tinta)}
+.apagado{color:var(--suave)}
+.centrado{text-align:center}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:var(--e2);
+  font-size:11.5px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--suave);
+}
+.kicker::before{
+  content:"";width:22px;height:1px;background:var(--rojo);
+}
+.kicker--solo::before{display:none}
+
+.punto{
+  display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--rojo);vertical-align:middle;
+}
+
+/* ===================================================================
+   2. ESTRUCTURA — grid de 12 columnas, franjas, ritmo vertical
+   =================================================================== */
+.caja{
+  width:100%;max-width:var(--ancho);margin:0 auto;
+  padding-left:var(--e5);padding-right:var(--e5);
+}
+@media(min-width:768px){.caja{padding-left:var(--e7);padding-right:var(--e7)}}
+
+.g12{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--e5)}
+@media(min-width:768px){.g12{grid-template-columns:repeat(8,1fr);gap:var(--e6)}}
+@media(min-width:1024px){.g12{grid-template-columns:repeat(12,1fr);gap:var(--e6)}}
+
+.franja{padding:var(--e9) 0}
+@media(min-width:900px){.franja{padding:var(--e10) 0}}
+.franja--nieve{background:var(--nieve)}
+.franja--oscura{background:var(--tinta);color:var(--blanco)}
+.franja--oscura .apagado{color:#A8A099}
+.franja--oscura .kicker{color:#A8A099}
+
+.regla{height:1px;background:var(--linea);border:0}
+
+/* ===================================================================
+   3. NAVEGACIÓN — vidrio muy discreto
+   =================================================================== */
+.marco{
+  position:sticky;top:0;z-index:60;
+  background:rgba(255,253,251,.72);
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--curva),background .3s var(--curva);
+}
+.marco.pegado{border-bottom-color:var(--linea);background:rgba(255,253,251,.86)}
+.marco .caja{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.marca{
+  display:flex;align-items:center;gap:var(--e2);
+  font-size:14px;font-weight:650;letter-spacing:-.02em;text-decoration:none;
+}
+.marca span{color:var(--suave);font-weight:400}
+@media(max-width:520px){.marca span{display:none}}
+
+/* ===================================================================
+   4. BOTONES — grandes, respirados, micro interacción
+   =================================================================== */
+.btn{
+  --bg:var(--rojo); --bg2:var(--rojo-osc); --fg:#fff;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  gap:var(--e2);
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--fg);text-decoration:none;text-align:center;
+  font-size:16px;font-weight:640;letter-spacing:-.012em;line-height:1.2;
+  padding:19px var(--e6);
+  border:0;border-radius:var(--r-s);
+  box-shadow:var(--s2), inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .28s var(--curva), box-shadow .28s var(--curva), filter .28s var(--curva);
+  will-change:transform;
+  cursor:pointer;
+  overflow:hidden;
+}
+.btn::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 60%);
+  opacity:0;transition:opacity .28s var(--curva);
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--s3), inset 0 1px 0 rgba(255,255,255,.18);filter:brightness(1.06)}
+.btn:hover::after{opacity:1}
+.btn:active{transform:translateY(0);box-shadow:var(--s1);filter:brightness(.98)}
+.btn:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+
+.btn--grande{font-size:clamp(16px,1.9vw,19px);padding:23px var(--e7)}
+.btn--bloque{display:flex;width:100%}
+.btn--tinta{--bg:var(--tinta-90);--bg2:var(--tinta)}
+.btn--claro{--bg:#fff;--bg2:#F4F1EC;--fg:var(--tinta);box-shadow:var(--s2)}
+.btn--mini{font-size:13.5px;font-weight:640;padding:11px var(--e5);border-radius:999px}
+@media(max-width:600px){.btn--mini{padding:10px var(--e4);font-size:13px}}
+
+.bajo-btn{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:var(--e2) var(--e4);
+  margin-top:var(--e4);font-size:13.5px;color:var(--tenue);letter-spacing:-.005em;
+}
+.bajo-btn i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.bajo-btn i::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--tenue)}
+
+/* ===================================================================
+   5. PORTADA — composición de imágenes con profundidad
+   =================================================================== */
+.portada{position:relative;padding:var(--e8) 0 var(--e9);overflow:hidden}
+@media(min-width:900px){.portada{padding:var(--e9) 0 var(--e10)}}
+.portada::before{
+  content:"";position:absolute;top:-10%;right:-15%;width:60vw;height:60vw;
+  max-width:820px;max-height:820px;
+  background:radial-gradient(circle,rgba(217,146,47,.14),transparent 66%);
+  pointer-events:none;
+}
+.portada .g12{align-items:center;row-gap:var(--e8)}
+.portada__texto{grid-column:1/-1}
+.portada__arte{grid-column:1/-1}
+@media(min-width:1024px){
+  .portada__texto{grid-column:1/span 6}
+  .portada__arte{grid-column:8/span 5}
+}
+.portada .display{margin:var(--e5) 0 var(--e5)}
+.portada .lead{max-width:34ch;margin-bottom:var(--e7)}
+.portada__cta{display:flex;flex-direction:column;align-items:flex-start;gap:0;max-width:400px}
+.portada__cta .btn{width:100%}
+.portada__cta .bajo-btn{justify-content:flex-start}
+
+/* --- cifras --- */
+.cifras{
+  display:flex;gap:var(--e7);margin-top:var(--e8);
+  padding-top:var(--e6);border-top:1px solid var(--linea);
+}
+.cifras div .n{
+  display:block;font-size:clamp(24px,3vw,32px);font-weight:750;
+  letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;
+}
+.cifras div .r{
+  display:block;margin-top:6px;font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tenue);font-weight:500;
+}
+@media(max-width:420px){.cifras{gap:var(--e5)}}
+
+/* --- composición de fotos --- */
+.composicion{position:relative;aspect-ratio:1/1.06;max-width:460px;margin:0 auto}
+.composicion figure{
+  position:absolute;overflow:hidden;border-radius:var(--r-m);
+  background:var(--nieve-2);
+  box-shadow:var(--s4);
+  will-change:transform;
+}
+.composicion img{width:100%;height:100%;object-fit:cover}
+.composicion .f1{
+  inset:0 14% 18% 0;z-index:2;
+  transform:rotate(-2.2deg);
+  border-radius:var(--r-l);
+}
+.composicion .f2{
+  width:47%;aspect-ratio:1;right:0;top:16%;z-index:3;
+  transform:rotate(3.4deg);
+}
+.composicion .f3{
+  width:41%;aspect-ratio:1;left:9%;bottom:0;z-index:4;
+  transform:rotate(-4deg);
+}
+.composicion .sello{
+  position:absolute;right:2%;bottom:12%;z-index:5;
+  background:var(--blanco);border-radius:var(--r-s);
+  padding:12px 16px;box-shadow:var(--s3);
+  transform:rotate(2deg);
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--suave);font-weight:600;line-height:1.4;
+}
+.composicion .sello b{
+  display:block;font-size:17px;letter-spacing:-.02em;text-transform:none;
+  color:var(--tinta);font-weight:750;
+}
+@media(max-width:1023px){.composicion{max-width:400px}}
+
+/* ===================================================================
+   6. CINTA — nombres de platillos en movimiento continuo
+   =================================================================== */
+.cinta{
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  padding:var(--e5) 0;overflow:hidden;background:var(--blanco);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.cinta__pista{display:flex;width:max-content;animation:correr 46s linear infinite}
+.cinta__grupo{display:flex;align-items:center;gap:var(--e6);padding-right:var(--e6)}
+.cinta__grupo span{
+  font-size:14px;font-weight:500;color:var(--suave);white-space:nowrap;
+  letter-spacing:-.01em;display:inline-flex;align-items:center;gap:var(--e4);
+}
+.cinta__grupo span::after{
+  content:"";width:4px;height:4px;border-radius:50%;background:var(--ambar);flex:none;
+}
+@keyframes correr{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* ===================================================================
+   7. LISTAS EDITORIALES
+   =================================================================== */
+.lista{list-style:none}
+.lista li{
+  position:relative;padding-left:38px;
+  padding-top:var(--e4);padding-bottom:var(--e4);
+  border-bottom:1px solid var(--linea);
+}
+.lista li:last-child{border-bottom:0}
+.lista li::before{
+  content:"";position:absolute;left:0;top:calc(var(--e4) + 6px);
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(31,122,69,.10);
+}
+.lista li::after{
+  content:"";position:absolute;left:6px;top:calc(var(--e4) + 12px);
+  width:8px;height:4px;border-left:1.8px solid var(--verde);border-bottom:1.8px solid var(--verde);
+  transform:rotate(-45deg);
+}
+.lista--dolor li::before{background:rgba(192,52,26,.09)}
+.lista--dolor li::after{
+  left:6.5px;top:calc(var(--e4) + 11px);width:7px;height:7px;
+  border:0;border-radius:0;transform:none;
+  background:
+    linear-gradient(45deg,transparent 44%,var(--rojo) 44%,var(--rojo) 56%,transparent 56%),
+    linear-gradient(-45deg,transparent 44%,var(--rojo) 44%,var(--rojo) 56%,transparent 56%);
+}
+
+/* ===================================================================
+   8. TARJETAS
+   =================================================================== */
+.rejilla{display:grid;gap:var(--e5)}
+.rejilla--2{grid-template-columns:1fr}
+.rejilla--3{grid-template-columns:1fr}
+@media(min-width:640px){.rejilla--2,.rejilla--3{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.rejilla--3{grid-template-columns:repeat(3,1fr)}}
+
+.tarjeta{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  border-radius:var(--r-m);
+  padding:var(--e6);
+  box-shadow:var(--s1);
+  transition:transform .4s var(--curva),box-shadow .4s var(--curva),border-color .4s var(--curva);
+}
+.tarjeta:hover{transform:translateY(-3px);box-shadow:var(--s3);border-color:var(--linea-fuerte)}
+.tarjeta h3{margin-bottom:var(--e2)}
+.tarjeta p{font-size:15.5px;color:var(--suave);line-height:1.6}
+.tarjeta__n{
+  display:block;font-size:11px;font-weight:650;letter-spacing:.14em;
+  color:var(--rojo);margin-bottom:var(--e4);font-variant-numeric:tabular-nums;
+}
+
+/* ===================================================================
+   9. CATEGORÍAS — tabla editorial
+   =================================================================== */
+.cats{border-top:1px solid var(--linea)}
+.cats div{
+  display:flex;justify-content:space-between;align-items:baseline;gap:var(--e5);
+  padding:var(--e4) 0;border-bottom:1px solid var(--linea);
+  transition:padding-left .35s var(--curva);
+}
+.cats div:hover{padding-left:var(--e2)}
+.cats b{font-weight:550;font-size:16.5px;letter-spacing:-.015em}
+.cats i{
+  font-style:normal;font-weight:550;color:var(--tenue);white-space:nowrap;
+  font-size:14px;font-variant-numeric:tabular-nums;
+}
+.cats i em{font-style:normal;color:var(--tinta);font-weight:650}
+
+/* ===================================================================
+   10. MOCKUP — cómo se ve una receta por dentro
+   =================================================================== */
+.aparato{
+  position:relative;width:100%;max-width:326px;margin:0 auto;
+  aspect-ratio:9/18.6;
+  background:linear-gradient(160deg,#2A251F,#100E0B);
+  border-radius:44px;padding:11px;
+  box-shadow:var(--s4), 0 0 0 1px rgba(255,255,255,.05) inset;
+}
+.aparato::before{
+  content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);
+  width:88px;height:22px;background:#0B0A08;border-radius:999px;z-index:3;
+}
+.pantalla{
+  width:100%;height:100%;background:var(--blanco);border-radius:34px;
+  overflow:hidden;position:relative;
+}
+.receta{padding:44px var(--e5) var(--e5);height:100%;overflow:hidden}
+.receta__n{
+  font-size:10.5px;letter-spacing:.16em;color:var(--rojo);font-weight:700;
+}
+.receta h4{
+  font-size:22px;line-height:1.12;letter-spacing:-.035em;font-weight:750;
+  margin:6px 0 8px;
+}
+.receta__bajada{font-size:12.5px;line-height:1.5;color:var(--suave);margin-bottom:var(--e4)}
+.receta__datos{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--linea);border:1px solid var(--linea);border-radius:var(--r-xs);
+  overflow:hidden;margin-bottom:var(--e4);
+}
+.receta__datos div{background:var(--blanco);padding:9px 11px}
+.receta__datos .r{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);font-weight:600}
+.receta__datos .v{font-size:14px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.receta__datos .v em{font-style:normal;font-size:10px;font-weight:500;color:var(--suave)}
+.receta h5{
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  font-weight:650;margin-bottom:7px;
+}
+.receta ul,.receta ol{margin:0 0 var(--e4) 0;padding-left:15px}
+.receta li{font-size:12px;line-height:1.5;color:var(--tinta-70);margin-bottom:4px}
+.receta ul{list-style:none;padding-left:0}
+.receta ul li{position:relative;padding-left:13px}
+.receta ul li::before{
+  content:"";position:absolute;left:0;top:8px;width:4px;height:4px;
+  border-radius:50%;background:var(--ambar);
+}
+.receta__tip{
+  background:var(--ambar-luz);border-radius:var(--r-xs);padding:10px 12px;
+  font-size:11.5px;line-height:1.45;color:#6A4715;
+}
+.receta__tip b{display:block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.pantalla::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:88px;
+  background:linear-gradient(transparent,var(--blanco));pointer-events:none;
+}
+
+/* ===================================================================
+   11. GALERÍA BENTO
+   =================================================================== */
+.bento{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(96px,auto);gap:var(--e3);
+}
+@media(min-width:768px){.bento{grid-auto-rows:minmax(150px,auto);gap:var(--e4)}}
+.bento figure{
+  overflow:hidden;border-radius:var(--r-s);background:var(--nieve-2);
+  box-shadow:var(--s1);
+}
+@media(min-width:768px){.bento figure{border-radius:var(--r-m)}}
+.bento img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--curva);
+}
+.bento figure:hover img{transform:scale(1.05)}
+.bento .a{grid-column:span 2;grid-row:span 2}
+.bento .b{grid-column:span 2;grid-row:span 1}
+.bento .c{grid-column:span 1;grid-row:span 1}
+.bento .d{grid-column:span 1;grid-row:span 1}
+.bento .e{grid-column:span 2;grid-row:span 1}
+.bento .f{grid-column:span 2;grid-row:span 2}
+.bento .g{grid-column:span 2;grid-row:span 1}
+
+/* ===================================================================
+   12. OFERTA
+   =================================================================== */
+.reloj-caja{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:var(--e4) var(--e5);margin-bottom:var(--e6);
+}
+.reloj-caja .rot{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tenue);font-weight:600;
+}
+.reloj{display:flex;gap:var(--e2);align-items:center}
+.reloj div{
+  background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-xs);
+  padding:8px 10px;min-width:54px;text-align:center;box-shadow:var(--s1);
+}
+.reloj .num{
+  font-size:22px;font-weight:750;line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;
+}
+.reloj .u{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tenue);margin-top:4px}
+
+.oferta{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  border-radius:var(--r-xl);
+  padding:var(--e7) var(--e6);
+  box-shadow:var(--s4);
+  max-width:560px;margin:0 auto;
+  position:relative;overflow:hidden;
+}
+@media(min-width:768px){.oferta{padding:var(--e8) var(--e8)}}
+.oferta::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--rojo),var(--ambar));
+}
+.suma{width:100%;border-collapse:collapse;margin-bottom:var(--e6);font-size:15px;text-align:left}
+.suma td{padding:12px 0;border-bottom:1px solid var(--linea);color:var(--suave)}
+.suma td:last-child{text-align:right;white-space:nowrap;font-weight:600;color:var(--tinta);font-variant-numeric:tabular-nums}
+.suma tr:last-child td{
+  border-bottom:0;border-top:1px solid var(--linea-fuerte);
+  padding-top:14px;color:var(--tinta);font-weight:650;
+}
+.suma tr:last-child td:last-child{text-decoration:line-through;text-decoration-color:var(--rojo);text-decoration-thickness:1.5px}
+
+.precio-bloque{text-align:center;margin-bottom:var(--e6)}
+.antes{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tenue);font-weight:600}
+.precio{
+  font-size:clamp(56px,12vw,88px);font-weight:800;letter-spacing:-.055em;
+  line-height:1;margin:var(--e3) 0 var(--e2);font-variant-numeric:tabular-nums;
+  display:flex;align-items:flex-start;justify-content:center;gap:6px;
+}
+.precio sup{font-size:.3em;font-weight:650;letter-spacing:-.02em;margin-top:.5em}
+.moneda{font-size:14px;color:var(--suave)}
+
+/* ===================================================================
+   13. GARANTÍA
+   =================================================================== */
+.garantia{
+  display:grid;gap:var(--e6);align-items:center;
+  grid-template-columns:1fr;
+}
+@media(min-width:768px){.garantia{grid-template-columns:auto 1fr;gap:var(--e7)}}
+.escudo{
+  width:96px;height:96px;border-radius:50%;flex:none;
+  background:rgba(31,122,69,.07);
+  border:1px solid rgba(31,122,69,.18);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--verde);
+}
+.escudo b{font-size:26px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.escudo b em{display:block;font-style:normal;font-size:9.5px;letter-spacing:.12em;font-weight:650;margin-top:2px}
+
+/* ===================================================================
+   14. FAQ
+   =================================================================== */
+details{border-bottom:1px solid var(--linea)}
+details:first-of-type{border-top:1px solid var(--linea)}
+summary{
+  cursor:pointer;font-weight:600;font-size:16.5px;letter-spacing:-.018em;
+  list-style:none;padding:var(--e5) 44px var(--e5) 0;position:relative;
+  transition:color .3s var(--curva);
+}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--rojo)}
+summary::after,summary::before{
+  content:"";position:absolute;right:6px;top:50%;background:var(--suave);
+  transition:transform .35s var(--curva),background .3s var(--curva);
+}
+summary::after{width:13px;height:1.5px;margin-top:-.75px}
+summary::before{width:1.5px;height:13px;margin-top:-6.5px;right:11.75px}
+details[open] summary::before{transform:rotate(90deg);opacity:0}
+details[open] summary{color:var(--rojo)}
+details[open] summary::after{background:var(--rojo)}
+details .cuerpo{
+  overflow:hidden;
+  color:var(--suave);font-size:16px;line-height:1.65;
+  padding:0 var(--e8) var(--e5) 0;
+  animation:abrir .4s var(--curva);
+}
+@keyframes abrir{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ===================================================================
+   15. CIERRE + PIE + BARRA
+   =================================================================== */
+.franja--oscura{position:relative;overflow:hidden}
+.franja--oscura::before{
+  content:"";position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);
+  width:100%;max-width:900px;aspect-ratio:1;
+  background:radial-gradient(circle,rgba(192,52,26,.22),transparent 62%);
+  pointer-events:none;
+}
+.franja--oscura .caja{position:relative}
+.franja--oscura .h2{max-width:20ch;margin:var(--e5) auto var(--e5)}
+
+footer{
+  padding:var(--e8) 0 var(--e7);
+  border-top:1px solid var(--linea);
+  font-size:13.5px;color:var(--tenue);line-height:1.7;
+}
+footer .g12{row-gap:var(--e5)}
+footer .col-a{grid-column:1/-1}
+footer .col-b{grid-column:1/-1}
+@media(min-width:1024px){
+  footer .col-a{grid-column:1/span 5}
+  footer .col-b{grid-column:7/span 6;text-align:right}
+}
+
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(255,253,251,.82);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-top:1px solid var(--linea);
+  padding:var(--e3) var(--e5) calc(var(--e3) + env(safe-area-inset-bottom));
+  transform:translateY(110%);
+  transition:transform .5s var(--curva);
+}
+.barra.visible{transform:translateY(0)}
+.barra .btn{width:100%;padding:16px;font-size:15.5px}
+@media(min-width:900px){.barra{display:none}}
+@media(max-width:899px){body{padding-bottom:86px}}
+
+.aviso{
+  background:var(--tinta);color:#F3D9A0;text-align:center;
+  padding:10px var(--e5);font-size:13px;font-weight:500;letter-spacing:-.01em;
+}
+
+/* ===================================================================
+   16. ANIMACIÓN — scroll reveal, 60fps (solo transform/opacity/filter)
+   =================================================================== */
+.rev{
+  opacity:0;transform:translate3d(0,22px,0);filter:blur(6px);
+  transition:opacity .9s var(--curva),transform .9s var(--curva),filter .9s var(--curva);
+  transition-delay:var(--d,0ms);
+  will-change:opacity,transform;
+}
+.rev.on{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:18px; line-height:1.6; color:var(--tinta); background:#fff;
-    -webkit-font-smoothing:antialiased; padding-bottom:92px;
-  }
-  img{max-width:100%;height:auto;display:block}
-
-  .franja{padding:54px 20px}
-  .franja--crema{background:var(--crema)}
-  .franja--oscura{background:var(--tinta);color:#fff}
-  .franja--oscura .apagado{color:#c9c2ba}
-  .caja{max-width:680px;margin:0 auto}
-
-  h1{font-size:clamp(29px,6.8vw,44px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:18px}
-  h2{font-size:clamp(24px,5.2vw,33px);line-height:1.2;letter-spacing:-.015em;font-weight:800;margin-bottom:20px}
-  h3{font-size:19px;font-weight:700;margin-bottom:8px}
-  p{margin-bottom:18px}
-  .apagado{color:var(--suave)}
-  .centrado{text-align:center}
-
-  .bajada{font-size:clamp(17px,4vw,20px);color:var(--suave);margin-bottom:28px}
-
-  .etiqueta{display:inline-block;background:var(--amarillo);color:#8a3b12;
-    padding:6px 14px;border-radius:999px;font-size:14px;font-weight:800;
-    letter-spacing:.02em;margin-bottom:18px}
-
-  /* ---------- botones ---------- */
-  .boton{display:block;background:var(--naranja);color:#fff;text-decoration:none;
-    text-align:center;font-size:clamp(17px,3.6vw,20px);font-weight:800;
-    padding:20px 22px;border-radius:var(--radio);line-height:1.3;
-    box-shadow:0 3px 0 var(--naranja-osc);
-    transition:transform .06s ease,background .15s ease;
-    animation:latido 3s ease-in-out infinite}
-  .boton:hover{background:var(--naranja-osc)}
-  .boton:active{transform:translateY(3px);box-shadow:none}
-  @keyframes latido{0%,93%,100%{transform:scale(1)}96%{transform:scale(1.02)}}
-  @media (prefers-reduced-motion:reduce){.boton{animation:none}}
-  .bajo-boton{text-align:center;font-size:15px;color:var(--suave);margin-top:12px}
-
-  /* ---------- contador ---------- */
-  .contador{background:var(--tinta);color:#fff;border-radius:var(--radio);
-    padding:18px;text-align:center;margin-bottom:24px}
-  .contador .titulo{font-size:13px;font-weight:800;letter-spacing:.08em;color:#f0a860;margin-bottom:10px}
-  .reloj{display:flex;gap:10px;justify-content:center}
-  .reloj div{background:#3a3531;border-radius:8px;padding:8px 4px;min-width:62px}
-  .reloj .num{font-size:26px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-  .reloj .rot{font-size:11px;color:#b3aaa2;text-transform:uppercase;letter-spacing:.05em}
-
-  /* ---------- listas ---------- */
-  .lista{list-style:none;margin-bottom:26px}
-  .lista li{padding-left:34px;position:relative;margin-bottom:13px}
-  .lista li::before{content:"✓";position:absolute;left:0;top:-2px;color:var(--verde);font-weight:800;font-size:21px}
-  .lista--dolor li::before{content:"✕";color:#c62828}
-
-  /* ---------- galería ---------- */
-  .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:26px}
-  .galeria img{aspect-ratio:1;object-fit:cover;border-radius:8px}
-  @media(max-width:420px){.galeria{grid-template-columns:repeat(2,1fr)}}
-
-  /* ---------- categorías ---------- */
-  .cats{border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;margin-bottom:26px}
-  .cats div{display:flex;justify-content:space-between;align-items:center;gap:12px;
-    padding:14px 18px;border-bottom:1px solid var(--linea);font-size:17px}
-  .cats div:last-child{border-bottom:0}
-  .cats b{font-weight:700}
-  .cats i{font-style:normal;font-weight:800;color:var(--naranja);white-space:nowrap}
-
-  /* ---------- tarjetas ---------- */
-  .rejilla{display:grid;gap:14px;margin-bottom:26px}
-  @media(min-width:560px){.rejilla--2{grid-template-columns:1fr 1fr}}
-  .tarjeta{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px 22px}
-  .tarjeta p:last-child{margin-bottom:0}
-  .icono{font-size:26px;line-height:1;margin-bottom:10px}
-
-  /* ---------- oferta ---------- */
-  .oferta{border:3px solid var(--naranja);border-radius:18px;padding:30px 24px;text-align:center;background:#fff}
-  .antes{color:var(--suave);font-size:18px;margin-bottom:0}
-  .precio{font-size:clamp(48px,13vw,66px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:6px 0 2px}
-  .precio small{font-size:.4em;font-weight:700;vertical-align:.6em}
-  .moneda{color:var(--suave);font-size:16px;margin-bottom:24px}
-
-  .suma{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:16px;text-align:left}
-  .suma td{padding:10px 0;border-bottom:1px solid var(--linea)}
-  .suma td:last-child{text-align:right;white-space:nowrap;font-weight:700}
-  .suma tr:last-child td{border-bottom:0;border-top:2px solid var(--tinta);font-weight:800;font-size:18px;padding-top:12px}
-
-  /* ---------- garantía ---------- */
-  .garantia{border-left:5px solid var(--verde);background:var(--crema);
-    padding:22px 24px;border-radius:0 var(--radio) var(--radio) 0}
-  .garantia p:last-child{margin-bottom:0}
-
-  /* ---------- FAQ ---------- */
-  details{border-bottom:1px solid var(--linea);padding:18px 0}
-  summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;padding-right:30px;position:relative}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";position:absolute;right:0;top:-4px;color:var(--suave);font-weight:400;font-size:26px;line-height:1}
-  details[open] summary::after{content:"−"}
-  details p{margin:12px 0 0;color:var(--suave);font-size:17px}
-
-  /* ---------- barra fija ---------- */
-  .barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:50;
-    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
-    border-top:1px solid var(--linea);padding:12px 16px;
-    box-shadow:0 -4px 16px rgba(0,0,0,.07)}
-  .barra-fija .boton{padding:16px;font-size:17px;animation:none}
-  @media(min-width:900px){.barra-fija{display:none}body{padding-bottom:0}}
-
-  .aviso-config{background:#c62828;color:#fff;text-align:center;padding:12px 16px;font-size:15px;font-weight:700}
-
-  footer{padding:38px 20px 28px;text-align:center;font-size:14px;color:var(--suave);
-    border-top:1px solid var(--linea);line-height:1.55}
-  footer p{margin-bottom:12px}
+  .rev{opacity:1;transform:none;filter:none}
+  .cinta__pista{animation:none}
+}
 </style>
 </head>
 <body>
 
-<div class="aviso-config" id="avisoConfig" hidden>
-  ⚠️ Falta pegar tu link de Kiwify en index.html (busca LINK_CHECKOUT)
+<div class="aviso" id="avisoConfig" hidden>
+  Falta pegar tu link de Kiwify en index.html (busca LINK_CHECKOUT)
 </div>
 
 <!-- ================================================================
-     1. ENCABEZADO
+     NAVEGACIÓN
      ================================================================ -->
-<section class="franja">
+<header class="marco" id="marco">
   <div class="caja">
-    <span class="etiqueta">🔥 PRECIO DE LANZAMIENTO</span>
+    <a class="marca" href="#top">
+      Recetario Air Fryer <span>· México</span>
+    </a>
+    <a class="btn btn--mini" data-checkout href="#oferta">Quiero el recetario</a>
+  </div>
+</header>
 
-    <h1>¿Tu freidora de aire nada más sirve para hacer papas?</h1>
+<!-- ================================================================
+     1. PORTADA
+     ================================================================ -->
+<section class="portada" id="top">
+  <div class="caja">
+    <div class="g12">
 
-    <p class="bajada">
-      <strong>150 recetas</strong> con el tiempo y la temperatura exactos de cada una.
-      Del elote asado con cotija a la cochinita pibil, de las alitas buffalo al volcán
-      de chocolate. Sin «hasta que dore», sin adivinar.
-    </p>
+      <div class="portada__texto">
+        <span class="kicker rev">Precio de lanzamiento</span>
 
-    <div class="galeria">
-      <img src="imagenes/costillas-bbq.jpg" alt="Costillas BBQ en freidora de aire" loading="lazy">
-      <img src="imagenes/elote.jpg" alt="Elotes asados" loading="lazy">
-      <img src="imagenes/churros.jpg" alt="Churros en freidora de aire" loading="lazy">
-      <img src="imagenes/pollo-entero.jpg" alt="Pollo rostizado" loading="lazy">
-      <img src="imagenes/camarones-ajo.jpg" alt="Camarones al ajo" loading="lazy">
-      <img src="imagenes/volcan-chocolate.jpg" alt="Volcán de chocolate" loading="lazy">
+        <h1 class="display rev" style="--d:80ms">
+          ¿Tu freidora de aire nada más sirve para hacer papas?
+        </h1>
+
+        <p class="lead rev" style="--d:160ms">
+          <strong>150 recetas</strong> con el tiempo y la temperatura exactos de cada una.
+          Del elote asado con cotija a la cochinita pibil, de las alitas buffalo al volcán
+          de chocolate. Sin «hasta que dore», sin adivinar.
+        </p>
+
+        <div class="portada__cta rev" style="--d:240ms">
+          <a class="btn btn--grande" data-checkout href="#oferta">Quiero las 150 recetas</a>
+          <div class="bajo-btn">
+            <i>Acceso inmediato</i><i>Pago único</i><i>Garantía de 7 días</i>
+          </div>
+        </div>
+
+        <div class="cifras rev" style="--d:320ms">
+          <div><span class="n">150</span><span class="r">Recetas</span></div>
+          <div><span class="n">9</span><span class="r">Categorías</span></div>
+          <div><span class="n">162</span><span class="r">Páginas</span></div>
+        </div>
+      </div>
+
+      <div class="portada__arte rev" style="--d:200ms">
+        <div class="composicion" id="composicion">
+          <figure class="f1" data-p="0.030">
+            <img src="imagenes/costillas-bbq.jpg" alt="Costillas BBQ hechas en freidora de aire" fetchpriority="high">
+          </figure>
+          <figure class="f2" data-p="-0.055">
+            <img src="imagenes/elote.jpg" alt="Elotes asados con queso cotija" loading="lazy">
+          </figure>
+          <figure class="f3" data-p="0.070">
+            <img src="imagenes/volcan-chocolate.jpg" alt="Volcán de chocolate" loading="lazy">
+          </figure>
+          <div class="sello" data-p="-0.030">
+            <b>195 °C</b>
+            12–14 min
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS</a>
-    <p class="bajo-boton">Acceso inmediato · Pago único · Garantía de 7 días</p>
   </div>
 </section>
 
 <!-- ================================================================
+     CINTA DE PLATILLOS
+     ================================================================ -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta__pista">
+    <div class="cinta__grupo">
+      <span>Cochinita pibil</span><span>Elotes con cotija</span><span>Alitas buffalo</span>
+      <span>Chiles rellenos</span><span>Churros</span><span>Carnitas</span>
+      <span>Papas gajo</span><span>Camarones al ajo</span><span>Esquites</span>
+      <span>Volcán de chocolate</span><span>Sopes</span><span>Arrachera</span>
+      <span>Nopales asados</span><span>Buñuelos</span><span>Chilaquiles</span>
+    </div>
+    <div class="cinta__grupo">
+      <span>Cochinita pibil</span><span>Elotes con cotija</span><span>Alitas buffalo</span>
+      <span>Chiles rellenos</span><span>Churros</span><span>Carnitas</span>
+      <span>Papas gajo</span><span>Camarones al ajo</span><span>Esquites</span>
+      <span>Volcán de chocolate</span><span>Sopes</span><span>Arrachera</span>
+      <span>Nopales asados</span><span>Buñuelos</span><span>Chilaquiles</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
      2. EL PROBLEMA
      ================================================================ -->
-<section class="franja franja--crema">
+<section class="franja">
   <div class="caja">
-    <h2>Si te pasa alguna de estas, sigue leyendo</h2>
+    <div class="g12">
+      <div style="grid-column:1/-1" class="rev">
+        <span class="kicker">El problema</span>
+      </div>
 
-    <ul class="lista lista--dolor">
-      <li>La usas para papas y nuggets, y de ahí no pasas</li>
-      <li>Buscas recetas en internet y la mitad no dice ni tiempo ni temperatura</li>
-      <li>Se te quema por fuera y queda crudo por dentro</li>
-      <li>Los empanizados se te caen o salen blancos y con sabor a crudo</li>
-      <li>Está guardada en la alacena porque da flojera pensar qué hacer</li>
-    </ul>
+      <div class="rev" style="grid-column:1/-1;--d:60ms">
+        <h2 style="max-width:16ch">Si te pasa alguna de estas, sigue leyendo</h2>
+      </div>
 
-    <p>
-      No cocinas mal. Lo que pasa es que la freidora de aire cocina distinto al horno y
-      al sartén, y nadie te dio los números. Con los tiempos y temperaturas correctos,
-      cualquiera la usa bien desde el primer día.
-    </p>
+      <div class="rev" style="grid-column:1/-1;--d:120ms">
+        <ul class="lista lista--dolor">
+          <li>La usas para papas y nuggets, y de ahí no pasas</li>
+          <li>Buscas recetas en internet y la mitad no dice ni tiempo ni temperatura</li>
+          <li>Se te quema por fuera y queda crudo por dentro</li>
+          <li>Los empanizados se te caen o salen blancos y con sabor a crudo</li>
+          <li>Está guardada en la alacena porque da flojera pensar qué hacer</li>
+        </ul>
+      </div>
+
+      <div class="rev" style="grid-column:1/-1;--d:180ms">
+        <p class="lead" style="max-width:56ch;color:var(--tinta);font-weight:400">
+          No cocinas mal. Lo que pasa es que la freidora de aire cocina distinto al horno y
+          al sartén, y nadie te dio los números. Con los tiempos y temperaturas correctos,
+          cualquiera la usa bien desde el primer día.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ================================================================
      3. LA SOLUCIÓN
      ================================================================ -->
-<section class="franja">
+<section class="franja franja--nieve">
   <div class="caja">
-    <h2>150 Recetas para Freidora de Aire</h2>
+    <div class="g12" style="row-gap:var(--e8)">
 
-    <p>
-      Un recetario digital con <strong>150 recetas organizadas en 9 categorías</strong>,
-      escritas en español y con ingredientes que consigues en cualquier súper de México.
-    </p>
+      <div class="sol-texto rev">
+        <span class="kicker">La solución</span>
+        <h2 style="margin:var(--e5) 0 var(--e5);max-width:14ch">150 Recetas para Freidora de Aire</h2>
 
-    <p>
-      Cada receta trae <strong>tiempo, temperatura, rendimiento y nivel de dificultad</strong>,
-      los ingredientes, el paso a paso numerado y un consejo con el detalle que hace la
-      diferencia. Lo abres en el celular mientras cocinas.
-    </p>
+        <p class="apagado" style="margin-bottom:var(--e5)">
+          Un recetario digital con <strong>150 recetas organizadas en 9 categorías</strong>,
+          escritas en español y con ingredientes que consigues en cualquier súper de México.
+        </p>
 
-    <div class="cats">
-      <div><b>Desayunos</b><i>20 recetas</i></div>
-      <div><b>Papas y botanas</b><i>20 recetas</i></div>
-      <div><b>Pollo</b><i>25 recetas</i></div>
-      <div><b>Carne de res</b><i>15 recetas</i></div>
-      <div><b>Cerdo</b><i>15 recetas</i></div>
-      <div><b>Pescados y mariscos</b><i>15 recetas</i></div>
-      <div><b>Verduras y guarniciones</b><i>20 recetas</i></div>
-      <div><b>Comida mexicana</b><i>10 recetas</i></div>
-      <div><b>Postres</b><i>10 recetas</i></div>
+        <p class="apagado" style="margin-bottom:var(--e7)">
+          Cada receta trae <strong>tiempo, temperatura, rendimiento y nivel de dificultad</strong>,
+          los ingredientes, el paso a paso numerado y un consejo con el detalle que hace la
+          diferencia. Lo abres en el celular mientras cocinas.
+        </p>
+
+        <div class="cats">
+          <div><b>Desayunos</b><i><em>20</em> recetas</i></div>
+          <div><b>Papas y botanas</b><i><em>20</em> recetas</i></div>
+          <div><b>Pollo</b><i><em>25</em> recetas</i></div>
+          <div><b>Carne de res</b><i><em>15</em> recetas</i></div>
+          <div><b>Cerdo</b><i><em>15</em> recetas</i></div>
+          <div><b>Pescados y mariscos</b><i><em>15</em> recetas</i></div>
+          <div><b>Verduras y guarniciones</b><i><em>20</em> recetas</i></div>
+          <div><b>Comida mexicana</b><i><em>10</em> recetas</i></div>
+          <div><b>Postres</b><i><em>10</em> recetas</i></div>
+        </div>
+
+        <div style="max-width:360px;margin-top:var(--e7)">
+          <a class="btn btn--bloque" data-checkout href="#oferta">Lo quiero por US$ 7</a>
+        </div>
+      </div>
+
+      <div class="sol-arte rev" style="--d:140ms">
+        <div class="aparato">
+          <div class="pantalla">
+            <article class="receta">
+              <div class="receta__n">RECETA 01 · COMIDA MEXICANA</div>
+              <h4>Taquitos dorados</h4>
+              <p class="receta__bajada">
+                De papa o de pollo, tronadores por fuera. El palillo es lo que evita que se abran.
+              </p>
+
+              <div class="receta__datos">
+                <div><div class="r">Temperatura</div><div class="v">195 <em>°C</em></div></div>
+                <div><div class="r">Tiempo</div><div class="v">12–14 <em>min</em></div></div>
+                <div><div class="r">Rinde</div><div class="v">12 <em>piezas</em></div></div>
+                <div><div class="r">Nivel</div><div class="v">Fácil</div></div>
+              </div>
+
+              <h5>Ingredientes</h5>
+              <ul>
+                <li>12 tortillas de maíz</li>
+                <li>2 tazas de papa cocida y machacada o pollo deshebrado</li>
+                <li>Sal y pimienta</li>
+                <li>Aceite en spray</li>
+              </ul>
+
+              <h5>Preparación</h5>
+              <ol>
+                <li>Sazona el relleno y déjalo enfriar por completo antes de armar.</li>
+                <li>Pon una cucharada de relleno en el borde de cada tortilla y enrolla apretado.</li>
+                <li>Precalienta a 195 °C y acomoda con el cierre hacia abajo, sin encimar.</li>
+              </ol>
+
+              <div class="receta__tip">
+                <b>Consejo</b>
+                Rellena poco. Un taquito sobrellenado se abre en el enrollado.
+              </div>
+            </article>
+          </div>
+        </div>
+        <p class="centrado apagado" style="font-size:13.5px;margin-top:var(--e5)">
+          Así se ve una receta por dentro
+        </p>
+      </div>
+
     </div>
-
-    <a class="boton" data-checkout href="#oferta">LO QUIERO POR US$ 7</a>
   </div>
 </section>
+
+<style>
+  @media(min-width:1024px){
+    .sol-texto{grid-column:1/span 6}
+    .sol-arte{grid-column:8/span 5;align-self:center}
+  }
+  @media(max-width:1023px){
+    .sol-texto,.sol-arte{grid-column:1/-1}
+  }
+</style>
 
 <!-- ================================================================
      4. DIFERENCIALES
      ================================================================ -->
-<section class="franja franja--crema">
+<section class="franja">
   <div class="caja">
-    <h2>Por qué este recetario y no otro</h2>
+    <div class="centrado rev" style="max-width:620px;margin:0 auto var(--e8)">
+      <span class="kicker kicker--solo">Por qué este</span>
+      <h2 style="margin-top:var(--e4)">Por qué este recetario y no otro</h2>
+    </div>
 
-    <div class="rejilla rejilla--2">
-      <div class="tarjeta">
-        <div class="icono">🌡️</div>
+    <div class="rejilla rejilla--3" style="margin-bottom:var(--e9)">
+      <div class="tarjeta rev"><span class="tarjeta__n">01</span>
         <h3>Números exactos</h3>
-        <p class="apagado">Cada receta con su temperatura y sus minutos. Nunca vas a leer «hasta que dore».</p>
+        <p>Cada receta con su temperatura y sus minutos. Nunca vas a leer «hasta que dore».</p>
       </div>
-      <div class="tarjeta">
-        <div class="icono">🇲🇽</div>
+      <div class="tarjeta rev" style="--d:70ms"><span class="tarjeta__n">02</span>
         <h3>Cocina mexicana</h3>
-        <p class="apagado">Elotes con cotija, esquites, carnitas, cochinita pibil, sopes, gorditas, chiles rellenos.</p>
+        <p>Elotes con cotija, esquites, carnitas, cochinita pibil, sopes, gorditas, chiles rellenos.</p>
       </div>
-      <div class="tarjeta">
-        <div class="icono">🛒</div>
+      <div class="tarjeta rev" style="--d:140ms"><span class="tarjeta__n">03</span>
         <h3>Ingredientes del súper</h3>
-        <p class="apagado">Nada que tengas que pedir por internet. Todo se consigue en la tienda de la esquina.</p>
+        <p>Nada que tengas que pedir por internet. Todo se consigue en la tienda de la esquina.</p>
       </div>
-      <div class="tarjeta">
-        <div class="icono">💡</div>
+      <div class="tarjeta rev" style="--d:0ms"><span class="tarjeta__n">04</span>
         <h3>Te explica el porqué</h3>
-        <p class="apagado">Por qué la salsa BBQ va al final, por qué el camarón se saca en forma de C, por qué el brownie sale antes.</p>
+        <p>Por qué la salsa BBQ va al final, por qué el camarón se saca en forma de C, por qué el brownie sale antes.</p>
       </div>
-      <div class="tarjeta">
-        <div class="icono">📱</div>
+      <div class="tarjeta rev" style="--d:70ms"><span class="tarjeta__n">05</span>
         <h3>En el celular</h3>
-        <p class="apagado">PDF que abres donde sea. También lo puedes imprimir si prefieres.</p>
+        <p>PDF que abres donde sea. También lo puedes imprimir si prefieres.</p>
       </div>
-      <div class="tarjeta">
-        <div class="icono">🗂️</div>
+      <div class="tarjeta rev" style="--d:140ms"><span class="tarjeta__n">06</span>
         <h3>Por categorías</h3>
-        <p class="apagado">Además del volumen completo, recibes los 9 recetarios por separado para encontrar todo más rápido.</p>
+        <p>Además del volumen completo, recibes los 9 recetarios por separado para encontrar todo más rápido.</p>
       </div>
     </div>
 
-    <div class="galeria">
-      <img src="imagenes/papas-gajo.jpg" alt="Papas gajo" loading="lazy">
-      <img src="imagenes/aros-cebolla.jpg" alt="Aros de cebolla" loading="lazy">
-      <img src="imagenes/queso-asado.jpg" alt="Queso panela dorado" loading="lazy">
-      <img src="imagenes/hamburguesa.jpg" alt="Hamburguesa casera" loading="lazy">
-      <img src="imagenes/coliflor-gratinada.jpg" alt="Coliflor rostizada" loading="lazy">
-      <img src="imagenes/pescado-empanizado.jpg" alt="Tilapia empanizada" loading="lazy">
-      <img src="imagenes/camote-rostizado.jpg" alt="Camote rostizado" loading="lazy">
-      <img src="imagenes/bunuelos.jpg" alt="Buñuelos" loading="lazy">
-      <img src="imagenes/donas.jpg" alt="Donas en freidora de aire" loading="lazy">
+    <div class="bento rev">
+      <figure class="a"><img src="imagenes/papas-gajo.jpg" alt="Papas gajo doradas" loading="lazy"></figure>
+      <figure class="b"><img src="imagenes/hamburguesa.jpg" alt="Hamburguesa casera" loading="lazy"></figure>
+      <figure class="c"><img src="imagenes/aros-cebolla.jpg" alt="Aros de cebolla" loading="lazy"></figure>
+      <figure class="d"><img src="imagenes/queso-asado.jpg" alt="Queso panela dorado" loading="lazy"></figure>
+      <figure class="f"><img src="imagenes/pollo-entero.jpg" alt="Pollo rostizado entero" loading="lazy"></figure>
+      <figure class="e"><img src="imagenes/coliflor-gratinada.jpg" alt="Coliflor rostizada" loading="lazy"></figure>
+      <figure class="c"><img src="imagenes/camote-rostizado.jpg" alt="Camote rostizado" loading="lazy"></figure>
+      <figure class="d"><img src="imagenes/pescado-empanizado.jpg" alt="Tilapia empanizada" loading="lazy"></figure>
+      <figure class="g"><img src="imagenes/churros.jpg" alt="Churros con azúcar y canela" loading="lazy"></figure>
+      <figure class="c"><img src="imagenes/donas.jpg" alt="Donas glaseadas" loading="lazy"></figure>
+      <figure class="d"><img src="imagenes/bunuelos.jpg" alt="Buñuelos" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -310,21 +938,38 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ================================================================
      5. LO QUE RECIBES
      ================================================================ -->
-<section class="franja">
+<section class="franja franja--nieve">
   <div class="caja">
-    <h2>Lo que recibes</h2>
+    <div class="g12">
+      <div class="rec-t rev">
+        <span class="kicker">El paquete</span>
+        <h2 style="margin-top:var(--e5)">Lo que recibes</h2>
+      </div>
 
-    <ul class="lista">
-      <li><strong>Colección completa — 150 recetas</strong>, 162 páginas con índice para encontrar cualquier receta en segundos</li>
-      <li><strong>Los 9 recetarios por categoría</strong> en archivos separados, para llevar solo el que necesitas</li>
-      <li><strong>Guía de arranque</strong> — las cinco reglas de la freidora de aire y los errores que arruinan la comida</li>
-      <li><strong>Tabla de términos y temperaturas</strong> para carne, pollo y pescado</li>
-      <li><strong>Bono: Freidora de aire para principiantes</strong> — 21 recetas de cinco ingredientes o menos, para empezar hoy mismo</li>
-    </ul>
+      <div class="rec-l rev" style="--d:100ms">
+        <ul class="lista">
+          <li><strong>Colección completa — 150 recetas</strong>, 162 páginas con índice para encontrar cualquier receta en segundos</li>
+          <li><strong>Los 9 recetarios por categoría</strong> en archivos separados, para llevar solo el que necesitas</li>
+          <li><strong>Guía de arranque</strong> — las cinco reglas de la freidora de aire y los errores que arruinan la comida</li>
+          <li><strong>Tabla de términos y temperaturas</strong> para carne, pollo y pescado</li>
+          <li><strong>Bono: Freidora de aire para principiantes</strong> — 21 recetas de cinco ingredientes o menos, para empezar hoy mismo</li>
+        </ul>
 
-    <a class="boton" data-checkout href="#oferta">QUIERO GARANTIZAR EL MÍO</a>
+        <div style="max-width:360px;margin-top:var(--e7)">
+          <a class="btn btn--bloque" data-checkout href="#oferta">Quiero garantizar el mío</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  @media(min-width:1024px){
+    .rec-t{grid-column:1/span 4}
+    .rec-l{grid-column:6/span 7}
+  }
+  @media(max-width:1023px){.rec-t,.rec-l{grid-column:1/-1}}
+</style>
 
 <!-- ================================================================
      6. OFERTA
@@ -334,20 +979,23 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
      publicidad engañosa y es causa común de rechazo en Meta.
      Si no piensas venderlos sueltos, borra la tabla y deja solo el precio.
      ================================================================ -->
-<section class="franja franja--crema" id="oferta">
+<section class="franja" id="oferta">
   <div class="caja">
-    <h2 class="centrado">Precio de lanzamiento</h2>
+    <div class="centrado rev" style="margin-bottom:var(--e7)">
+      <span class="kicker kicker--solo">Precio de lanzamiento</span>
+      <h2 style="margin-top:var(--e4)">Hoy cuesta menos que una comida</h2>
+    </div>
 
-    <div class="contador">
-      <p class="titulo">⏳ LA OFERTA TERMINA HOY</p>
+    <div class="reloj-caja rev" style="--d:60ms">
+      <span class="rot">La oferta termina hoy</span>
       <div class="reloj">
-        <div><div class="num">00</div><div class="rot">horas</div></div>
-        <div><div class="num">00</div><div class="rot">min</div></div>
-        <div><div class="num">00</div><div class="rot">seg</div></div>
+        <div><div class="num">00</div><div class="u">horas</div></div>
+        <div><div class="num">00</div><div class="u">min</div></div>
+        <div><div class="num">00</div><div class="u">seg</div></div>
       </div>
     </div>
 
-    <div class="oferta">
+    <div class="oferta rev" style="--d:120ms">
       <table class="suma">
         <tr><td>Colección completa — 150 recetas</td><td>US$ 14</td></tr>
         <tr><td>9 recetarios por categoría</td><td>US$ 9</td></tr>
@@ -355,12 +1003,14 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
         <tr><td>Valor total</td><td>US$ 28</td></tr>
       </table>
 
-      <p class="antes">Hoy, todo por</p>
-      <p class="precio"><small>US$</small>7</p>
-      <p class="moneda">Pago único · Puedes pagar en pesos mexicanos</p>
+      <div class="precio-bloque">
+        <p class="antes">Hoy, todo por</p>
+        <p class="precio"><sup>US$</sup>7</p>
+        <p class="moneda">Pago único · Puedes pagar en pesos mexicanos</p>
+      </div>
 
-      <a class="boton" data-checkout href="#">SÍ, QUIERO LAS 150 RECETAS</a>
-      <p class="bajo-boton">Compra segura · Acceso enviado a tu correo</p>
+      <a class="btn btn--grande btn--bloque" data-checkout href="#">Sí, quiero las 150 recetas</a>
+      <div class="bajo-btn"><i>Compra segura</i><i>Acceso enviado a tu correo</i></div>
     </div>
   </div>
 </section>
@@ -368,18 +1018,23 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ================================================================
      7. GARANTÍA
      ================================================================ -->
-<section class="franja">
+<section class="franja franja--nieve">
   <div class="caja">
-    <div class="garantia">
-      <h3>🛡️ Garantía de 7 días</h3>
-      <p>
-        Compra, descarga el recetario y úsalo. Si en 7 días sientes que no era para ti,
-        escribes pidiendo el reembolso y te devolvemos el 100% de tu dinero. Sin preguntas
-        y sin trámites raros.
-      </p>
-      <p class="apagado" style="font-size:16px">
-        Te quedas con el bono de todas formas.
-      </p>
+    <div class="garantia rev" style="max-width:820px;margin:0 auto">
+      <div class="escudo"><b>7<em>DÍAS</em></b></div>
+      <div>
+        <h3 style="font-size:23px;letter-spacing:-.028em;margin-bottom:var(--e3)">
+          Si no era para ti, te devolvemos todo
+        </h3>
+        <p class="apagado" style="font-size:16.5px">
+          Compra, descarga el recetario y úsalo. Si en 7 días sientes que no era para ti,
+          escribes pidiendo el reembolso y te devolvemos el 100% de tu dinero. Sin preguntas
+          y sin trámites raros.
+        </p>
+        <p class="apagado" style="font-size:15px;margin-top:var(--e3);color:var(--tenue)">
+          Te quedas con el bono de todas formas.
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -387,71 +1042,104 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
 <!-- ================================================================
      8. FAQ
      ================================================================ -->
-<section class="franja franja--crema">
+<section class="franja">
   <div class="caja">
-    <h2>Preguntas frecuentes</h2>
+    <div class="g12">
+      <div class="faq-t rev">
+        <span class="kicker">Dudas</span>
+        <h2 style="margin-top:var(--e5)">Preguntas frecuentes</h2>
+      </div>
 
-    <details><summary>¿Me llega algo a mi casa?</summary>
-      <p>No. Es un producto 100% digital, en PDF. No hay envíos ni costos de aduana.</p></details>
+      <div class="faq-l rev" style="--d:100ms">
+        <details><summary>¿Me llega algo a mi casa?</summary>
+          <div class="cuerpo">No. Es un producto 100% digital, en PDF. No hay envíos ni costos de aduana.</div></details>
 
-    <details><summary>¿Cómo lo recibo?</summary>
-      <p>Apenas se confirma el pago te llega un correo con el enlace de descarga. Normalmente tarda unos minutos. Revisa también la carpeta de spam.</p></details>
+        <details><summary>¿Cómo lo recibo?</summary>
+          <div class="cuerpo">Apenas se confirma el pago te llega un correo con el enlace de descarga. Normalmente tarda unos minutos. Revisa también la carpeta de spam.</div></details>
 
-    <details><summary>¿Sirve para cualquier marca de freidora?</summary>
-      <p>Sí. Las recetas usan tiempos y temperaturas estándar que funcionan en cualquier modelo. Cada aparato tiene su potencia, y por eso varias recetas incluyen cómo ajustar si la tuya calienta más o menos.</p></details>
+        <details><summary>¿Sirve para cualquier marca de freidora?</summary>
+          <div class="cuerpo">Sí. Las recetas usan tiempos y temperaturas estándar que funcionan en cualquier modelo. Cada aparato tiene su potencia, y por eso varias recetas incluyen cómo ajustar si la tuya calienta más o menos.</div></details>
 
-    <details><summary>¿Sirve si nunca he cocinado?</summary>
-      <p>Sí. El recetario abre con las cinco reglas de la freidora de aire y los errores más comunes, y el bono de principiantes tiene 21 recetas de cinco ingredientes o menos.</p></details>
+        <details><summary>¿Sirve si nunca he cocinado?</summary>
+          <div class="cuerpo">Sí. El recetario abre con las cinco reglas de la freidora de aire y los errores más comunes, y el bono de principiantes tiene 21 recetas de cinco ingredientes o menos.</div></details>
 
-    <details><summary>¿Puedo pagar en pesos?</summary>
-      <p>Sí. La plataforma de pago convierte automáticamente a tu moneda local al momento de la compra.</p></details>
+        <details><summary>¿Puedo pagar en pesos?</summary>
+          <div class="cuerpo">Sí. La plataforma de pago convierte automáticamente a tu moneda local al momento de la compra.</div></details>
 
-    <details><summary>¿Puedo pagar sin tarjeta de crédito?</summary>
-      <p>REEMPLAZA: revisa en tu checkout de Kiwify qué métodos aceptas en México (OXXO, SPEI, tarjeta de débito) y responde aquí exactamente cuáles.</p></details>
+        <details><summary>¿Puedo pagar sin tarjeta de crédito?</summary>
+          <div class="cuerpo">REEMPLAZA: revisa en tu checkout de Kiwify qué métodos aceptas en México (OXXO, SPEI, tarjeta de débito) y responde aquí exactamente cuáles.</div></details>
 
-    <details><summary>¿Es pago único o suscripción?</summary>
-      <p>Pago único de US$ 7. No se cobra nada de forma recurrente.</p></details>
+        <details><summary>¿Es pago único o suscripción?</summary>
+          <div class="cuerpo">Pago único de US$ 7. No se cobra nada de forma recurrente.</div></details>
 
-    <details><summary>¿Por cuánto tiempo tengo acceso?</summary>
-      <p>Para siempre. Descargas los archivos y quedan tuyos.</p></details>
+        <details><summary>¿Por cuánto tiempo tengo acceso?</summary>
+          <div class="cuerpo">Para siempre. Descargas los archivos y quedan tuyos.</div></details>
 
-    <details><summary>¿Y si no me gusta?</summary>
-      <p>Tienes 7 días para pedir el reembolso completo, sin necesidad de dar explicaciones.</p></details>
+        <details><summary>¿Y si no me gusta?</summary>
+          <div class="cuerpo">Tienes 7 días para pedir el reembolso completo, sin necesidad de dar explicaciones.</div></details>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  @media(min-width:1024px){
+    .faq-t{grid-column:1/span 4}
+    .faq-l{grid-column:6/span 7}
+  }
+  @media(max-width:1023px){.faq-t,.faq-l{grid-column:1/-1}}
+</style>
 
 <!-- ================================================================
      9. CIERRE
      ================================================================ -->
 <section class="franja franja--oscura">
   <div class="caja centrado">
-    <h2>Tu freidora puede ser el aparato que más uses en la cocina</h2>
-    <p class="apagado">
+    <span class="kicker kicker--solo rev">Última llamada</span>
+
+    <h2 class="h2 rev" style="--d:60ms">
+      Tu freidora puede ser el aparato que más uses en la cocina
+    </h2>
+
+    <p class="lead apagado rev" style="--d:120ms;max-width:46ch;margin:0 auto var(--e7)">
       O puede seguir guardada en la alacena. La diferencia son 150 recetas
       y menos de lo que cuesta una comida.
     </p>
 
-    <div style="max-width:460px;margin:0 auto">
-      <a class="boton" data-checkout href="#">EMPEZAR AHORA POR US$ 7</a>
-      <p class="bajo-boton" style="color:#b3aaa2">Acceso inmediato · Garantía de 7 días</p>
+    <div class="rev" style="--d:180ms;max-width:400px;margin:0 auto">
+      <a class="btn btn--grande btn--bloque" data-checkout href="#">Empezar ahora por US$ 7</a>
+      <div class="bajo-btn" style="color:#8F877F"><i>Acceso inmediato</i><i>Garantía de 7 días</i></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>REEMPLAZA: Tu Nombre o Empresa · Contacto: tucorreo@ejemplo.com</p>
-  <p>
-    Este sitio no forma parte de Facebook, Instagram ni Meta Platforms, Inc.
-    Los resultados dependen del uso que cada persona haga del material.
-  </p>
+  <div class="caja">
+    <div class="g12">
+      <div class="col-a">
+        <p style="color:var(--suave);font-weight:600;margin-bottom:var(--e2)">
+          REEMPLAZA: Tu Nombre o Empresa
+        </p>
+        <p>Contacto: tucorreo@ejemplo.com</p>
+      </div>
+      <div class="col-b">
+        <p>
+          Este sitio no forma parte de Facebook, Instagram ni Meta Platforms, Inc.
+          Los resultados dependen del uso que cada persona haga del material.
+        </p>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<div class="barra-fija">
-  <a class="boton" data-checkout href="#oferta">QUIERO LAS 150 RECETAS — US$ 7</a>
+<div class="barra" id="barra">
+  <a class="btn btn--bloque" data-checkout href="#oferta">Quiero las 150 recetas — US$ 7</a>
 </div>
 
 <script>
 (function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* --- Conecta todos los botones al checkout --- */
   var botones = document.querySelectorAll('[data-checkout]');
   var link = (typeof LINK_CHECKOUT === 'string' ? LINK_CHECKOUT : '').trim();
@@ -488,6 +1176,51 @@ fbq('init','TU_PIXEL_ID'); fbq('track','PageView');
     tic();
     setInterval(tic, 1000);
   }
+
+  /* --- Scroll reveal --- */
+  var revelables = document.querySelectorAll('.rev');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var ojo = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('on'); ojo.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    revelables.forEach(function(el){ ojo.observe(el); });
+  } else {
+    revelables.forEach(function(el){ el.classList.add('on'); });
+  }
+
+  /* --- Barra fija + borde del marco, en un solo rAF --- */
+  var marco = document.getElementById('marco');
+  var barra = document.getElementById('barra');
+  var capas = reduce ? [] : Array.prototype.slice.call(document.querySelectorAll('#composicion [data-p]'));
+  var pendiente = false;
+
+  function pintar(){
+    pendiente = false;
+    var y = window.pageYOffset;
+
+    if (marco) marco.classList.toggle('pegado', y > 8);
+    if (barra) barra.classList.toggle('visible', y > window.innerHeight * 0.7);
+
+    if (capas.length && y < window.innerHeight * 1.4) {
+      capas.forEach(function(c){
+        var p = parseFloat(c.getAttribute('data-p')) || 0;
+        var base = c.getAttribute('data-base');
+        if (base === null) {
+          base = getComputedStyle(c).transform;
+          base = (base === 'none') ? '' : base;
+          c.setAttribute('data-base', base);
+        }
+        c.style.transform = 'translate3d(0,' + (y * p).toFixed(2) + 'px,0) ' + base;
+      });
+    }
+  }
+
+  window.addEventListener('scroll', function(){
+    if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); }
+  }, { passive: true });
+  pintar();
 })();
 </script>
 
